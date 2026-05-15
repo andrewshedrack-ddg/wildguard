@@ -1,0 +1,25 @@
+name: Deploy Static Site to GitHub Pages
+
+on:
+  push:
+    branches: [ main, master ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Create WG config (optional)
+        run: |
+          mkdir -p app/static
+          echo "window.WG_API_BASE='${{ secrets.WG_API_BASE }}';" > app/static/WG_CONFIG.js
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./app/static
+          publish_branch: gh-pages
+          force_orphan: true

@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WildGuard Wildlife History</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Manrope:wght@400;500;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <div class="slideshow-bg" aria-hidden="true"></div>
+    <div class="overlay-mask" aria-hidden="true"></div>
+    <header class="site-nav">
+      <div class="nav-inner">
+        <a class="nav-brand" href="/">
+          <img src="https://images.unsplash.com/photo-1546182990-dffeafbe841d?auto=format&fit=crop&w=256&q=80" alt="WildGuard" onerror="this.onerror=null;this.src='/static/tiger-logo.svg';" />
+          <span>WildGuard</span>
+        </a>
+        <nav class="nav-links">
+          <a href="/">Home</a>
+          <a href="/dashboard">Dashboard</a>
+          <a href="/library">Library</a>
+          <a href="/history">History</a>
+          <a href="/map">Map</a>
+          <a href="/live">Live</a>
+        </nav>
+      </div>
+    </header>
+    <main class="layout single">
+      <section class="panel telemetry">
+        <div class="panel-head">
+          <h1>Wildlife Detection History</h1>
+          <p>Timeline and dominant species from captured wildlife events.</p>
+        </div>
+        <div class="stack">
+          <h2>Dominant Species</h2>
+          <ul id="dominantSpecies"></ul>
+        </div>
+        <div class="stack">
+          <h2>Timeline</h2>
+          <ul id="historyTimeline"></ul>
+        </div>
+      </section>
+    </main>
+    <script src="/static/site.js" type="module"></script>
+    <script src="/static/history.js" type="module"></script>
+  </body>
+</html>

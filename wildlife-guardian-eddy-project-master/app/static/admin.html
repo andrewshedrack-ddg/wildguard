@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WildGuard Admin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Manrope:wght@400;500;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <div class="slideshow-bg" aria-hidden="true"></div>
+    <div class="overlay-mask" aria-hidden="true"></div>
+    <div class="project-signature">PROJECT BY WILDGUARD</div>
+    <main class="layout single">
+      <section class="panel telemetry">
+        <div class="panel-head">
+          <h1>WildGuard Admin Console</h1>
+          <p>Manage animal records, bootstrap species files, and share the public live link.</p>
+          <div class="quick-links">
+            <a href="/">Dashboard</a>
+            <a href="/live">Public Live View</a>
+            <a href="/onboarding">Phone Setup</a>
+          </div>
+        </div>
+
+        <div class="stack">
+          <h2>Admin Access</h2>
+          <div class="lookup-row">
+            <input id="adminUser" type="text" placeholder="username" />
+            <input id="adminPass" type="password" placeholder="password" />
+          </div>
+          <div class="actions">
+            <button id="signIn">Sign In</button>
+            <button id="signUp">Sign Up</button>
+          </div>
+          <div id="adminStatus" class="profile-box">Sign in with your WildGuard account. First account becomes admin.</div>
+        </div>
+
+        <div class="stack">
+          <h2>Species Profiles</h2>
+          <div class="lookup-row">
+            <input id="searchSpecies" type="text" placeholder="Search species" />
+            <button id="refreshList">Refresh</button>
+          </div>
+          <ul id="profilesList"></ul>
+        </div>
+
+        <div class="stack">
+          <h2>Species Image Manager</h2>
+          <div class="lookup-row">
+            <input id="imageSpecies" type="text" placeholder="species_name (e.g. tiger)" />
+            <input id="imageUpload" type="file" accept="image/*" />
+          </div>
+          <div class="actions">
+            <button type="button" id="uploadImage">Upload Image</button>
+            <button type="button" id="refreshImages">Refresh Images</button>
+          </div>
+          <ul id="speciesImagesList"></ul>
+        </div>
+
+        <div class="stack">
+          <h2>Edit Profile</h2>
+          <form id="profileForm" class="admin-form">
+            <input name="species_name" placeholder="species_name" required />
+            <input name="scientific_name" placeholder="scientific_name" />
+            <input name="family" placeholder="family" />
+            <input name="conservation_status" placeholder="conservation_status" />
+            <input name="diet" placeholder="diet" />
+            <input name="average_lifespan_years" placeholder="average_lifespan_years" />
+            <input name="top_speed_kmh" placeholder="top_speed_kmh" type="number" />
+            <input name="habitats" placeholder="habitats (comma-separated)" />
+            <input name="regions" placeholder="regions (comma-separated)" />
+            <input name="aliases" placeholder="aliases (comma-separated)" />
+            <textarea name="facts" placeholder="facts (one per line)"></textarea>
+            <textarea name="safety_notes" placeholder="safety_notes"></textarea>
+            <div class="actions">
+              <button type="submit">Save Profile</button>
+              <button type="button" id="deleteProfile">Delete Species</button>
+              <button type="button" id="bootstrapProfiles">Bootstrap From Labels</button>
+            </div>
+          </form>
+          <div id="saveStatus" class="profile-box">Select a species from the list or enter a new one.</div>
+        </div>
+      </section>
+    </main>
+
+    <script src="/static/admin.js" type="module"></script>
+  </body>
+</html>
