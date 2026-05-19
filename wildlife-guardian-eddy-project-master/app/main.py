@@ -64,10 +64,13 @@ settings.animal_knowledge_path.mkdir(parents=True, exist_ok=True)
 settings.species_images_path.mkdir(parents=True, exist_ok=True)
 Base.metadata.create_all(bind=engine)
 
+APP_DIR = Path(__file__).resolve().parent
+STATIC_DIR = APP_DIR / "static"
+
 knowledge_base = AnimalKnowledgeBase(settings.animal_knowledge_path)
 knowledge_base.bootstrap_profiles(detector.load_species_labels())
 
-app.mount("/static", StaticFiles(directory="app/static"), name="static")
+app.mount("/static", StaticFiles(directory=str(STATIC_DIR)), name="static")
 app.mount("/media", StaticFiles(directory=str(settings.images_dir_path)), name="media")
 app.mount("/species-media", StaticFiles(directory=str(settings.species_images_path)), name="species-media")
 
@@ -721,57 +724,57 @@ def _current_user_from_auth_header(authorization: str | None, db: Session) -> Us
 
 @app.get("/")
 def index():
-    return FileResponse("app/static/index.html")
+    return FileResponse(STATIC_DIR / "index.html")
 
 
 @app.get("/dashboard")
 def dashboard_page():
-    return FileResponse("app/static/dashboard.html")
+    return FileResponse(STATIC_DIR / "dashboard.html")
 
 
 @app.get("/admin")
 def admin_page():
-    return FileResponse("app/static/admin.html")
+    return FileResponse(STATIC_DIR / "admin.html")
 
 
 @app.get("/live")
 def live_page():
-    return FileResponse("app/static/live.html")
+    return FileResponse(STATIC_DIR / "live.html")
 
 
 @app.get("/onboarding")
 def onboarding_page():
-    return FileResponse("app/static/onboarding.html")
+    return FileResponse(STATIC_DIR / "onboarding.html")
 
 
 @app.get("/remote-camera")
 def remote_camera_page():
-    return FileResponse("app/static/remote_camera.html")
+    return FileResponse(STATIC_DIR / "remote_camera.html")
 
 
 @app.get("/library")
 def library_page():
-    return FileResponse("app/static/library.html")
+    return FileResponse(STATIC_DIR / "library.html")
 
 
 @app.get("/inventory")
 def inventory_page():
-    return FileResponse("app/static/inventory.html")
+    return FileResponse(STATIC_DIR / "inventory.html")
 
 
 @app.get("/history")
 def history_page():
-    return FileResponse("app/static/history.html")
+    return FileResponse(STATIC_DIR / "history.html")
 
 
 @app.get("/map")
 def map_page():
-    return FileResponse("app/static/map.html")
+    return FileResponse(STATIC_DIR / "map.html")
 
 
 @app.get("/settings")
 def settings_page():
-    return FileResponse("app/static/settings.html")
+    return FileResponse(STATIC_DIR / "settings.html")
 
 
 def require_admin(
@@ -866,8 +869,11 @@ async def detect_image(
     source: str = Form(default="external-camera"),
     db: Session = Depends(get_db),
 ):
-    content = await file.read()
-    image = Image.open(BytesIO(content)).convert("RGB")
+    try:
+        content = await file.read()
+        image = Image.open(BytesIO(content)).convert("RGB")
+    except Exception:
+        raise HTTPException(status_code=400, detail="Invalid image upload")
 
     prediction = detector.predict(image, labels=_detector_candidates())
     matched_profile = knowledge_base.find_profile(prediction["label"])
@@ -1459,10 +1465,10 @@ def admin_bootstrap_species_profiles():
 if __name__ == "__main__":
     import uvicorn
 
-    host = settings.api_host
+    host = settings.api_host or "0.0.0.0"
     port = settings.api_port
 
-    print("\n=== WildGuard Local Server ===")
+    print("\n=== WildGuard Live Server ===")
     print(f"Home: http://127.0.0.1:{port}/")
     print(f"Dashboard: http://127.0.0.1:{port}/dashboard")
     print(f"Live: http://127.0.0.1:{port}/live")
