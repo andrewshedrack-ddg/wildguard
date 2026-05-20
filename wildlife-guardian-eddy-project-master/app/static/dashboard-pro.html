@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>WildGuard — Command Center</title>
+  <link rel="stylesheet" href="styles-pro.css" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="container navbar-content">
+      <a href="index.html" class="logo"><span class="logo-icon">🦁</span><span class="logo-text">WildGuard</span></a>
+      <nav class="nav-menu">
+        <a href="dashboard-pro.html" class="nav-link">Overview</a>
+        <a href="live.html" class="nav-link">Live</a>
+        <a href="library.html" class="nav-link">Library</a>
+        <a href="map.html" class="nav-link">Map</a>
+        <a href="settings.html" class="nav-link">Settings</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container" style="padding:2rem 0;">
+    <h1>Command Center</h1>
+    <p class="section-subtitle">Real-time monitoring, detection console, and operational controls</p>
+
+    <section class="panel" id="live-console" style="display:grid;grid-template-columns:1fr 360px;gap:1.2rem;">
+      <div>
+        <div class="demo-box" style="height:420px;display:flex;align-items:center;justify-content:center;">📷 Live Camera Feed</div>
+        <div style="margin-top:1rem;display:flex;gap:0.6rem;">
+          <button class="btn">Start Camera</button>
+          <button class="btn">Stop Camera</button>
+          <button class="btn">Scan Now</button>
+        </div>
+      </div>
+      <aside>
+        <div class="card" style="padding:1rem;margin-bottom:1rem;">
+          <h3>Quick Stats</h3>
+          <ul>
+            <li>Total Sightings: <strong id="totalSightings">0</strong></li>
+            <li>Unique Species: <strong id="uniqueSpecies">0</strong></li>
+            <li>Alerts: <strong id="alertsCount">0</strong></li>
+          </ul>
+        </div>
+        <div class="card" style="padding:1rem;">
+          <h3>Recent Detections</h3>
+          <ul id="recentDetections"><li>None yet</li></ul>
+        </div>
+      </aside>
+    </section>
+
+    <section style="margin-top:1.4rem;">
+      <h2>Inventory & Alerts</h2>
+      <div class="news-grid">
+        <div class="news-item">Inventory Item A</div>
+        <div class="news-item">Inventory Item B</div>
+        <div class="news-item">Recent Alert X</div>
+      </div>
+    </section>
+
+  </main>
+  <script src="index-pro.js"></script>
+</body>
+</html>

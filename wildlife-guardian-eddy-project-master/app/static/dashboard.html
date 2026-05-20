@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Manrope:wght@400;500;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="/static/styles.css" />
+    <link rel="stylesheet" href="styles-pro.css" />
   </head>
   <body>
     <div id="slideshowBg" class="slideshow-bg" aria-hidden="true"></div>
@@ -121,36 +121,36 @@
 
       <section id="scanArea" class="panel live-feed">
         <div class="panel-head">
-          <h2>AI Scan Console</h2>
+          <h2>🎥 AI Scan Console</h2>
           <p>Start camera scanning manually when you are ready.</p>
         </div>
 
-        <div class="video-wrap">
-          <video id="video" autoplay playsinline muted></video>
-          <canvas id="overlay"></canvas>
+        <div class="video-wrap" style="position:relative;margin:1.2rem 0;border-radius:10px;overflow:hidden;box-shadow:0 12px 30px rgba(0,0,0,0.15);">
+          <video id="video" autoplay playsinline muted style="width:100%;height:auto;display:block;background:#000;"></video>
+          <canvas id="overlay" style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;"></canvas>
           <div id="scanPulse" class="scan-pulse" aria-hidden="true"></div>
         </div>
 
-        <div class="lookup-row">
-          <select id="cameraSelect"></select>
-          <button id="refreshCameras">Refresh Cameras</button>
-          <button id="connectExternalCamera">Connect External Camera</button>
+        <div class="lookup-row" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.8rem;margin-bottom:1rem;">
+          <select id="cameraSelect" style="padding:0.6rem;border-radius:6px;border:2px solid #dae5dc;font-family:inherit;"></select>
+          <button id="refreshCameras" class="btn">🔄 Refresh Cameras</button>
+          <button id="connectExternalCamera" class="btn">📷 External Camera</button>
         </div>
-        <p id="externalCameraHint" class="tiny-note">
+        <p id="externalCameraHint" class="tiny-note" style="margin-bottom:1rem;">
           Tip: For Sony/Canon/Nikon cameras use USB cable + webcam utility/capture card, then click Connect External Camera.
         </p>
 
-        <div class="actions">
-          <button id="startCamera">Start Camera</button>
-          <button id="stopCamera">Stop Camera</button>
-          <button id="toggleAnimalMode">Animal-Only On</button>
-          <button id="toggleVoice">Voice On</button>
-          <button id="testVoice">Test Voice</button>
+        <div class="actions" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:0.8rem;margin-bottom:1.5rem;">
+          <button id="startCamera" class="btn" style="background:linear-gradient(135deg,#22c55e,#16a34a);border-color:#16a34a;">▶️ Start Camera</button>
+          <button id="stopCamera" class="btn" style="background:linear-gradient(135deg,#ef4444,#dc2626);border-color:#dc2626;">⏹ Stop Camera</button>
+          <button id="toggleAnimalMode" class="btn">🐾 Animal-Only</button>
+          <button id="toggleVoice" class="btn">🔊 Voice On</button>
+          <button id="testVoice" class="btn">🎵 Test Voice</button>
         </div>
 
-        <div class="results">
-          <h3>Immediate Feedback</h3>
-          <pre id="resultBox">Waiting for camera...</pre>
+        <div class="results" style="background:linear-gradient(135deg,rgba(11,90,43,0.05),rgba(240,165,0,0.05));padding:1.2rem;border-radius:8px;border-left:4px solid var(--accent);">
+          <h3>📊 Immediate Feedback</h3>
+          <pre id="resultBox" style="margin:0;font-size:0.9rem;color:var(--text);overflow-x:auto;">Waiting for camera...</pre>
         </div>
       </section>
 
@@ -236,7 +236,7 @@
     <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.4/build/qrcode.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.20.0/dist/tf.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd@2.2.3"></script>
-    <script src="/static/site.js" type="module"></script>
-    <script src="/static/app.js" type="module"></script>
+    <script src="index-pro.js"></script>
+    <script src="app.js"></script>
   </body>
 </html>

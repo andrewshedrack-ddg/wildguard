@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Calligraffitti&family=Cinzel:wght@500;700&family=Manrope:wght@400;500;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="/static/styles.css" />
+    <link rel="stylesheet" href="styles-pro.css" />
   </head>
   <body>
     <div class="frame-shell" aria-hidden="true"></div>
@@ -35,79 +35,80 @@
           <p>Control appearance, AI voice, and capture/database behavior from one place.</p>
         </div>
 
-        <div class="accordion" data-acc="appearance">
-          <div class="acc-head"><h3>Appearance Themes</h3><button class="acc-toggle">▾</button></div>
-          <div class="acc-body">
-            <div class="lookup-row">
-              <select id="themeSelect">
-                <option value="forest">Forest</option>
-                <option value="savanna">Savanna</option>
-                <option value="ocean">Ocean</option>
-                <option value="noir">Noir</option>
-              </select>
+        <div class="accordion" data-acc="appearance" style="margin-bottom:1rem;border-radius:8px;border:2px solid var(--border);overflow:hidden;transition:all 300ms ease;animation:slideInLeft 0.5s ease;">
+          <div class="acc-head" style="background:linear-gradient(135deg,rgba(11,90,43,0.05),rgba(240,165,0,0.05));padding:1rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;user-select:none;transition:all 250ms ease;" onclick="this.parentElement.classList.toggle('active')"><h3 style="margin:0;">🎨 Appearance Themes</h3><button class="acc-toggle" style="background:none;border:none;font-size:1.2rem;cursor:pointer;transition:transform 300ms ease;">▾</button></div>
+          <div class="acc-body" style="padding:1.2rem;background:linear-gradient(135deg,rgba(245,247,241,0.5),rgba(240,165,0,0.02));display:none;animation:slideInDown 0.3s ease;" onclick="event.stopPropagation()">
+            <div class="lookup-row" style="display:grid;gap:1rem;">
+              <label style="display:grid;gap:0.5rem;"><span style="font-weight:600;">Select Theme</span>
+              <select id="themeSelect" style="padding:0.6rem;border-radius:6px;border:2px solid #dae5dc;font-family:inherit;">
+                <option value="forest">🌲 Forest</option>
+                <option value="savanna">🦁 Savanna</option>
+                <option value="ocean">🌊 Ocean</option>
+                <option value="noir">⬛ Noir</option>
+              </select></label>
             </div>
           </div>
         </div>
 
-        <div class="accordion" data-acc="audio">
-          <div class="acc-head"><h3>AI Voice & Audio</h3><button class="acc-toggle">▾</button></div>
-          <div class="acc-body">
-            <div class="lookup-row">
-              <label>Master Volume <input id="masterVolume" type="range" min="0.1" max="1" step="0.01" /></label>
-              <label>Voice Rate <input id="voiceRate" type="range" min="0.8" max="1.2" step="0.01" /></label>
+        <div class="accordion" data-acc="audio" style="margin-bottom:1rem;border-radius:8px;border:2px solid var(--border);overflow:hidden;transition:all 300ms ease;animation:slideInLeft 0.5s ease 0.1s both;">
+          <div class="acc-head" style="background:linear-gradient(135deg,rgba(11,90,43,0.05),rgba(240,165,0,0.05));padding:1rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;user-select:none;transition:all 250ms ease;" onclick="this.parentElement.classList.toggle('active')"><h3 style="margin:0;">🎤 AI Voice & Audio</h3><button class="acc-toggle" style="background:none;border:none;font-size:1.2rem;cursor:pointer;transition:transform 300ms ease;">▾</button></div>
+          <div class="acc-body" style="padding:1.2rem;background:linear-gradient(135deg,rgba(245,247,241,0.5),rgba(240,165,0,0.02));display:none;animation:slideInDown 0.3s ease;" onclick="event.stopPropagation()">
+            <div class="lookup-row" style="display:grid;gap:1rem;">
+              <label style="display:grid;gap:0.5rem;"><span style="font-weight:600;">🔊 Master Volume</span> <input id="masterVolume" type="range" min="0.1" max="1" step="0.01" style="cursor:pointer;" /></label>
+              <label style="display:grid;gap:0.5rem;"><span style="font-weight:600;">⏱️ Voice Rate</span> <input id="voiceRate" type="range" min="0.8" max="1.2" step="0.01" style="cursor:pointer;" /></label>
             </div>
           </div>
         </div>
 
-        <div class="accordion" data-acc="capture">
-          <div class="acc-head"><h3>AI Capture Settings</h3><button class="acc-toggle">▾</button></div>
-          <div class="acc-body">
-            <div class="lookup-row">
-              <label>Auto-capture Interval (ms) <input id="captureMs" type="number" min="700" step="100" /></label>
-              <label>Minimum Confidence <input id="minConfidence" type="number" min="0.1" max="0.99" step="0.01" /></label>
+        <div class="accordion" data-acc="capture" style="margin-bottom:1rem;border-radius:8px;border:2px solid var(--border);overflow:hidden;transition:all 300ms ease;animation:slideInLeft 0.5s ease 0.2s both;">
+          <div class="acc-head" style="background:linear-gradient(135deg,rgba(11,90,43,0.05),rgba(240,165,0,0.05));padding:1rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;user-select:none;transition:all 250ms ease;" onclick="this.parentElement.classList.toggle('active')"><h3 style="margin:0;">🔍 AI Capture Settings</h3><button class="acc-toggle" style="background:none;border:none;font-size:1.2rem;cursor:pointer;transition:transform 300ms ease;">▾</button></div>
+          <div class="acc-body" style="padding:1.2rem;background:linear-gradient(135deg,rgba(245,247,241,0.5),rgba(240,165,0,0.02));display:none;animation:slideInDown 0.3s ease;" onclick="event.stopPropagation()">
+            <div class="lookup-row" style="display:grid;gap:1rem;">
+              <label style="display:grid;gap:0.5rem;"><span style="font-weight:600;">⏱️ Auto-capture Interval (ms)</span> <input id="captureMs" type="number" min="700" step="100" style="padding:0.6rem;border-radius:6px;border:2px solid #dae5dc;" /></label>
+              <label style="display:grid;gap:0.5rem;"><span style="font-weight:600;">🎯 Minimum Confidence</span> <input id="minConfidence" type="number" min="0.1" max="0.99" step="0.01" style="padding:0.6rem;border-radius:6px;border:2px solid #dae5dc;" /></label>
             </div>
-            <label class="check-row"><input id="strictAnimalMode" type="checkbox" /> <span>Strict animal-only mode</span></label>
-            <label class="check-row"><input id="doubleVerifyDetection" type="checkbox" /> <span>Require double verification before showing final detection</span></label>
+            <label class="check-row" style="display:flex;align-items:center;gap:0.8rem;margin-top:1rem;padding:0.8rem;background:rgba(11,90,43,0.05);border-radius:6px;cursor:pointer;"><input id="strictAnimalMode" type="checkbox" style="cursor:pointer;width:20px;height:20px;" /> <span>🐾 Strict animal-only mode</span></label>
+            <label class="check-row" style="display:flex;align-items:center;gap:0.8rem;margin-top:0.8rem;padding:0.8rem;background:rgba(11,90,43,0.05);border-radius:6px;cursor:pointer;"><input id="doubleVerifyDetection" type="checkbox" style="cursor:pointer;width:20px;height:20px;" /> <span>✓ Require double verification before showing final detection</span></label>
           </div>
         </div>
 
-        <div class="accordion" data-acc="map">
-          <div class="acc-head"><h3>Map & Visual Intelligence</h3><button class="acc-toggle">▾</button></div>
-          <div class="acc-body">
-            <div class="lookup-row">
-              <label>Radar Intensity
-                <select id="mapRadarIntensity">
-                  <option value="soft">Soft</option>
-                  <option value="medium">Medium</option>
-                  <option value="high">High</option>
+        <div class="accordion" data-acc="map" style="margin-bottom:1rem;border-radius:8px;border:2px solid var(--border);overflow:hidden;transition:all 300ms ease;animation:slideInLeft 0.5s ease 0.3s both;">
+          <div class="acc-head" style="background:linear-gradient(135deg,rgba(11,90,43,0.05),rgba(240,165,0,0.05));padding:1rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;user-select:none;transition:all 250ms ease;" onclick="this.parentElement.classList.toggle('active')"><h3 style="margin:0;">🗺️ Map & Visual Intelligence</h3><button class="acc-toggle" style="background:none;border:none;font-size:1.2rem;cursor:pointer;transition:transform 300ms ease;">▾</button></div>
+          <div class="acc-body" style="padding:1.2rem;background:linear-gradient(135deg,rgba(245,247,241,0.5),rgba(240,165,0,0.02));display:none;animation:slideInDown 0.3s ease;" onclick="event.stopPropagation()">
+            <div class="lookup-row" style="display:grid;gap:1rem;">
+              <label style="display:grid;gap:0.5rem;"><span style="font-weight:600;">📡 Radar Intensity</span>
+                <select id="mapRadarIntensity" style="padding:0.6rem;border-radius:6px;border:2px solid #dae5dc;font-family:inherit;">
+                  <option value="soft">🔇 Soft</option>
+                  <option value="medium">📊 Medium</option>
+                  <option value="high">📈 High</option>
                 </select>
               </label>
-              <label>Slideshow Quality
-                <select id="slideshowQuality">
-                  <option value="balanced">Balanced</option>
-                  <option value="high">High</option>
-                  <option value="ultra">Ultra</option>
+              <label style="display:grid;gap:0.5rem;"><span style="font-weight:600;">🎬 Slideshow Quality</span>
+                <select id="slideshowQuality" style="padding:0.6rem;border-radius:6px;border:2px solid #dae5dc;font-family:inherit;">
+                  <option value="balanced">⚖️ Balanced</option>
+                  <option value="high">🔆 High</option>
+                  <option value="ultra">✨ Ultra</option>
                 </select>
               </label>
             </div>
-            <label class="check-row"><input id="mapAutoFocus" type="checkbox" /> <span>Auto-focus world map on selected species</span></label>
+            <label class="check-row" style="display:flex;align-items:center;gap:0.8rem;margin-top:1rem;padding:0.8rem;background:rgba(11,90,43,0.05);border-radius:6px;cursor:pointer;"><input id="mapAutoFocus" type="checkbox" style="cursor:pointer;width:20px;height:20px;" /> <span>🎯 Auto-focus world map on selected species</span></label>
           </div>
         </div>
 
-        <div class="accordion" data-acc="nav">
-          <div class="acc-head"><h3>Navigation & Menu</h3><button class="acc-toggle">▾</button></div>
-          <div class="acc-body">
-            <div class="lookup-row">
-              <label>Menu Density
-                <select id="menuDensity">
-                  <option value="comfortable">Comfortable</option>
-                  <option value="compact">Compact</option>
+        <div class="accordion" data-acc="nav" style="margin-bottom:1rem;border-radius:8px;border:2px solid var(--border);overflow:hidden;transition:all 300ms ease;animation:slideInLeft 0.5s ease 0.4s both;">
+          <div class="acc-head" style="background:linear-gradient(135deg,rgba(11,90,43,0.05),rgba(240,165,0,0.05));padding:1rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;user-select:none;transition:all 250ms ease;" onclick="this.parentElement.classList.toggle('active')"><h3 style="margin:0;">📋 Navigation & Menu</h3><button class="acc-toggle" style="background:none;border:none;font-size:1.2rem;cursor:pointer;transition:transform 300ms ease;">▾</button></div>
+          <div class="acc-body" style="padding:1.2rem;background:linear-gradient(135deg,rgba(245,247,241,0.5),rgba(240,165,0,0.02));display:none;animation:slideInDown 0.3s ease;" onclick="event.stopPropagation()">
+            <div class="lookup-row" style="display:grid;gap:1rem;">
+              <label style="display:grid;gap:0.5rem;"><span style="font-weight:600;">Menu Density</span>
+                <select id="menuDensity" style="padding:0.6rem;border-radius:6px;border:2px solid #dae5dc;font-family:inherit;">
+                  <option value="comfortable">🛋️ Comfortable</option>
+                  <option value="compact">📦 Compact</option>
                 </select>
               </label>
-              <label>Enable Advanced Menu
-                <select id="advancedMenu">
-                  <option value="on">On</option>
-                  <option value="off">Off</option>
+              <label style="display:grid;gap:0.5rem;"><span style="font-weight:600;">Advanced Menu</span>
+                <select id="advancedMenu" style="padding:0.6rem;border-radius:6px;border:2px solid #dae5dc;font-family:inherit;">
+                  <option value="on">✓ On</option>
+                  <option value="off">✗ Off</option>
                 </select>
               </label>
             </div>
@@ -140,7 +141,7 @@
       </section>
     </main>
 
-    <script src="/static/site.js" type="module"></script>
+    <script src="index-pro.js"></script>
     <script src="/static/settings.js" type="module"></script>
   </body>
 </html>

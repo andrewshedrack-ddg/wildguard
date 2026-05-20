@@ -971,3 +971,7 @@ init().catch((err) => {
   // Do not block camera usage if non-critical data loading fails.
   resultBox.textContent = `System partially loaded (${err.message}). Camera can still be started.`;
 });
+
+// Expose simple global hooks for pro UI
+if (!window.startCamera) window.startCamera = startCamera;
+if (!window.stopCamera) window.stopCamera = stopCamera;
