@@ -1,0 +1,20 @@
+[
+  {
+    "image_url": "images/slideshow/lion.svg",
+    "label": "Lion",
+    "scientific_name": "Panthera leo",
+    "conservation_status": "Vulnerable"
+  },
+  {
+    "image_url": "images/slideshow/elephant.svg",
+    "label": "Elephant",
+    "scientific_name": "Loxodonta africana",
+    "conservation_status": "Vulnerable"
+  },
+  {
+    "image_url": "images/slideshow/zebra.svg",
+    "label": "Zebra",
+    "scientific_name": "Equus quagga",
+    "conservation_status": "Least Concern"
+  }
+]

@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>WildGuard Camera & Model Test</title>
+    <link rel="stylesheet" href="styles-pro.css" />
+    <style>body{padding:18px;font-family:Manrope,system-ui,Segoe UI,Arial;margin:0} .wrap{max-width:980px;margin:0 auto} .controls{display:flex;gap:8px;margin:12px 0}</style>
+  </head>
+  <body>
+    <div class="wrap">
+      <h1>Camera + Model Test</h1>
+      <p>Use this page to validate camera access and model loading in your browser. If running locally, allow camera permission when prompted.</p>
+
+      <div class="controls">
+        <button id="startCamera" class="btn">Start Camera</button>
+        <button id="stopCamera" class="btn">Stop Camera</button>
+        <button id="loadModelBtn" class="btn">Load Model</button>
+      </div>
+
+      <div style="position:relative;max-width:820px;">
+        <video id="video" autoplay playsinline muted style="width:100%;background:#000;display:block"></video>
+        <canvas id="overlay" style="position:absolute;left:0;top:0;pointer-events:none;width:100%;height:100%"></canvas>
+      </div>
+
+      <h3>Result</h3>
+      <pre id="resultBox">Idle</pre>
+
+      <p class="tiny-note">This page reuses the app runtime present in <code>app.js</code>. It will attempt to load local vendor files first.</p>
+    </div>
+
+    <script src="index-pro.js"></script>
+    <script src="app.js"></script>
+    <script>
+      // Self-contained local test (independent of app.js runtime)
+      let localStream = null;
+      let localModel = null;
+      let detectHandle = null;
+      const video = document.getElementById('video');
+      const overlay = document.getElementById('overlay');
+      const resultBox = document.getElementById('resultBox');
+      const ctx = overlay.getContext('2d');
+
+      async function tryHead(url){
+        try{const r=await fetch(url,{method:'HEAD'});return r.ok}catch{return false}
+      }
+
+      async function ensureScript(src){
+        if (Array.from(document.scripts).some(s=>s.src && s.src.includes(src))) return;
+        return new Promise((resolve,reject)=>{
+          const s=document.createElement('script');s.src=src;s.onload=resolve;s.onerror=()=>reject(new Error('Failed to load '+src));document.head.appendChild(s);
+        });
+      }
+
+      async function loadModelLocal(){
+        resultBox.textContent='Preparing model load...';
+        // prefer local vendor files
+        const localTf = 'vendor/tf.min.js';
+        const localCoco = 'vendor/coco-ssd.min.js';
+        try{
+          if (!window.tf){
+            if (await tryHead(localTf)) await ensureScript(localTf);
+            else await ensureScript('https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.20.0/dist/tf.min.js');
+          }
+          if (!window.cocoSsd){
+            if (await tryHead(localCoco)) await ensureScript(localCoco);
+            else await ensureScript('https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd@2.2.3/dist/coco-ssd.min.js');
+          }
+          localModel = await window.cocoSsd.load();
+          resultBox.textContent = 'Model loaded.';
+          return localModel;
+        }catch(e){
+          resultBox.textContent = 'Model load failed: '+(e.message||e);
+          return null;
+        }
+      }
+
+      function draw(preds){
+        overlay.width = video.videoWidth; overlay.height = video.videoHeight; ctx.clearRect(0,0,overlay.width,overlay.height);
+        ctx.strokeStyle='#f1be48';ctx.lineWidth=2;ctx.fillStyle='#f7dc8e';ctx.font='14px sans-serif';
+        preds.forEach(p=>{const [x,y,w,h]=p.bbox;ctx.strokeRect(x,y,w,h);ctx.fillText(p.class+' '+Math.round(p.score*100)+'%',x,y>12?y-6:y+14);});
+      }
+
+      async function startLocalCamera(){
+        resultBox.textContent='Requesting camera permission...';
+        try{
+          localStream = await navigator.mediaDevices.getUserMedia({video:{facingMode:'environment'},audio:false});
+          video.srcObject = localStream;
+          await video.play();
+          resultBox.textContent='Camera ready.';
+          if (!localModel) await loadModelLocal();
+          detectLoop();
+        }catch(e){ resultBox.textContent='Camera error: '+(e.message||e); }
+      }
+
+      async function detectLoop(){
+        if (!localModel || video.readyState<2){ detectHandle = requestAnimationFrame(detectLoop); return; }
+        try{
+          const preds = await localModel.detect(video);
+          const visible = preds; draw(visible);
+          resultBox.textContent = visible.length ? `${visible[0].class} ${Math.round(visible[0].score*100)}%` : 'No objects detected';
+        }catch(e){ resultBox.textContent='Detect error: '+(e.message||e); }
+        detectHandle = requestAnimationFrame(detectLoop);
+      }
+
+      function stopLocalCamera(){
+        if (localStream){ localStream.getTracks().forEach(t=>t.stop()); localStream=null; }
+        if (detectHandle) cancelAnimationFrame(detectHandle); detectHandle=null;
+        ctx.clearRect(0,0,overlay.width,overlay.height);
+        resultBox.textContent='Camera stopped.';
+      }
+
+      document.getElementById('loadModelBtn').addEventListener('click', ()=>loadModelLocal());
+      document.getElementById('startCamera').addEventListener('click', ()=>startLocalCamera());
+      document.getElementById('stopCamera').addEventListener('click', ()=>stopLocalCamera());
+    </script>
+  </body>
+</html>

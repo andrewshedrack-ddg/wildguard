@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WildGuard | Wildlife Conservation & AI Detection Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles-pro.css" />
+  <style>
+    .hero-bg.slideshow{position:absolute;inset:0;z-index:-1;overflow:hidden}
+    .hero-bg.slideshow .slide{position:absolute;left:0;top:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1s ease}
+    .hero-bg.slideshow .slide.active{opacity:1}
+    .hero-bg .hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg, rgba(11,90,43,0.6), rgba(0,0,0,0.4));pointer-events:none}
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <header class="navbar">
+    <div class="container">
+      <div class="navbar-content">
+        <a href="/" class="logo">
+          <span class="logo-icon">🦁</span>
+          <span class="logo-text">WildGuard</span>
+        </a>
+        <button id="mobileMenuToggle" class="mobile-toggle">☰</button>
+        <nav class="nav-menu" id="navMenu">
+          <a href="#parks" class="nav-link">Parks & Reserves</a>
+          <a href="#species" class="nav-link">Species Library</a>
+          <a href="#detection" class="nav-link">AI Detection</a>
+          <a href="#news" class="nav-link">News & Updates</a>
+          <a href="#conservation" class="nav-link">Conservation</a>
+          <a href="dashboard.html" class="nav-link btn-primary">Dashboard</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Protect Africa's Wildlife</h1>
+      <p>Advanced AI detection, real-time monitoring, and conservation intelligence</p>
+      <div class="hero-actions">
+        <a href="#detection" class="btn btn-lg">Start AI Detection</a>
+        <a href="#species" class="btn btn-outline btn-lg">Explore Species</a>
+      </div>
+    </div>
+    <div class="hero-bg slideshow" id="heroSlideshow">
+      <img src="images/elephant.svg" class="slide active" alt="elephant">
+      <img src="images/lion.svg" class="slide" alt="lion">
+      <img src="images/giraffe.svg" class="slide" alt="giraffe">
+      <div class="hero-overlay"></div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="stats">
+    <div class="container">
+      <div class="stat-item">
+        <h3>1000+</h3>
+        <p>Species Tracked</p>
+      </div>
+      <div class="stat-item">
+        <h3>50+</h3>
+        <p>Protected Areas</p>
+      </div>
+      <div class="stat-item">
+        <h3>24/7</h3>
+        <p>Live Monitoring</p>
+      </div>
+      <div class="stat-item">
+        <h3>99%</h3>
+        <p>Detection Accuracy</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Content -->
+  <section class="featured" id="featured">
+    <div class="container">
+      <h2>Featured Stories</h2>
+      <div class="featured-grid">
+        <article class="featured-card">
+          <div class="art-panel art-elephant">
+            <div class="art-tag">Conservation Field Report</div>
+            <h3 class="art-title">Protecting Africa's Elephants</h3>
+            <p class="art-copy">AI technology is helping rangers track endangered elephant populations across protected reserves.</p>
+          </div>
+          <div class="card-content">
+            <a href="#" class="read-more">Read Story →</a>
+          </div>
+        </article>
+        <article class="featured-card">
+          <div class="art-panel art-lion">
+            <div class="art-tag">Wildlife Response</div>
+            <h3 class="art-title">Saving the Big Cats</h3>
+            <p class="art-copy">Real-time detection systems reduce human-wildlife conflict and improve anti-poaching response.</p>
+          </div>
+          <div class="card-content">
+            <a href="#" class="read-more">Read Story →</a>
+          </div>
+        </article>
+        <article class="featured-card">
+          <div class="art-panel art-marine">
+            <div class="art-tag">Coastal Monitoring</div>
+            <h3 class="art-title">Marine Wildlife Monitoring</h3>
+            <p class="art-copy">Tracking systems now monitor coastal ecosystems and protect marine species in their natural habitats.</p>
+          </div>
+          <div class="card-content">
+            <a href="#" class="read-more">Read Story →</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Parks Section -->
+  <section class="parks-section" id="parks">
+    <div class="container">
+      <h2>Our Protected Areas</h2>
+      <p class="section-subtitle">Explore Kenya's premier wildlife reserves and national parks</p>
+      <div class="parks-grid">
+        <div class="park-card">
+          <div class="art-panel art-park-one">
+            <div class="art-tag">Protected Area</div>
+            <h3 class="art-title">Amboseli National Park</h3>
+            <p class="art-copy">Home to Africa's iconic elephants and the snow-capped Mount Kilimanjaro.</p>
+          </div>
+          <div class="card-content">
+            <p class="tiny-note">Wetland corridors, elephant migration routes, and high-value camera monitoring.</p>
+          </div>
+        </div>
+        <div class="park-card">
+          <div class="art-panel art-park-two">
+            <div class="art-tag">Migration Corridor</div>
+            <h3 class="art-title">Masai Mara National Reserve</h3>
+            <p class="art-copy">Witness the Great Migration and incredible predator-prey interactions.</p>
+          </div>
+          <div class="card-content">
+            <p class="tiny-note">Big-cat tracking, seasonal movement analytics, and ranger deployment intelligence.</p>
+          </div>
+        </div>
+        <div class="park-card">
+          <div class="art-panel art-park-three">
+            <div class="art-tag">Conservation Stronghold</div>
+            <h3 class="art-title">Tsavo National Parks</h3>
+            <p class="art-copy">Africa's largest conservation area protecting diverse ecosystems.</p>
+          </div>
+          <div class="card-content">
+            <p class="tiny-note">Wide-area surveillance, waterhole observation, and cross-zone wildlife reporting.</p>
+          </div>
+        </div>
+      </div>
+      <a href="library.html" class="btn">View All Parks</a>
+    </div>
+  </section>
+
+  <!-- Species Library Preview -->
+  <section class="species-preview" id="species">
+    <div class="container">
+      <h2>Species Library</h2>
+      <p class="section-subtitle">Browse detailed profiles of over 1000 wildlife species</p>
+      <div class="species-carousel">
+        <div class="species-item">
+          <div class="species-image">🦁</div>
+          <h3>African Lion</h3>
+          <p>Status: Vulnerable</p>
+        </div>
+        <div class="species-item">
+          <div class="species-image">🐘</div>
+          <h3>African Elephant</h3>
+          <p>Status: Vulnerable</p>
+        </div>
+        <div class="species-item">
+          <div class="species-image">🦒</div>
+          <h3>Giraffe</h3>
+          <p>Status: Vulnerable</p>
+        </div>
+        <div class="species-item">
+          <div class="species-image">🐆</div>
+          <h3>Leopard</h3>
+          <p>Status: Vulnerable</p>
+        </div>
+        <div class="species-item">
+          <div class="species-image">🦓</div>
+          <h3>Zebra</h3>
+          <p>Status: Least Concern</p>
+        </div>
+      </div>
+      <a href="library.html" class="btn">Explore All Species</a>
+    </div>
+  </section>
+
+  <!-- AI Detection Section -->
+  <section class="detection-section" id="detection">
+    <div class="container">
+      <h2>Real-Time AI Detection</h2>
+      <p class="section-subtitle">Identify wildlife instantly with our advanced detection system</p>
+      <div class="detection-demo">
+        <div class="demo-box">
+          <div class="camera-placeholder">📷 Live Camera Feed</div>
+          <p>Point your camera at wildlife to get instant AI-powered identification and conservation data</p>
+        </div>
+        <div class="detection-features">
+          <h3>Detection Features</h3>
+          <ul>
+            <li>✓ Real-time species identification</li>
+            <li>✓ Conservation status information</li>
+            <li>✓ Behavioral analysis</li>
+            <li>✓ Location tracking</li>
+            <li>✓ Population monitoring</li>
+            <li>✓ Threat assessment</li>
+          </ul>
+        </div>
+      </div>
+      <a href="dashboard.html" class="btn btn-lg">Open Detection Dashboard</a>
+    </div>
+  </section>
+
+  <!-- News Section -->
+  <section class="news-section" id="news">
+    <div class="container">
+      <h2>Latest Conservation News</h2>
+      <div class="news-grid">
+        <article class="news-item">
+          <span class="date">May 15, 2026</span>
+          <h3>New Technology Boosts Anti-Poaching Efforts</h3>
+          <p>AI-powered detection systems show 87% improvement in threat identification and response times</p>
+        </article>
+        <article class="news-item">
+          <span class="date">May 10, 2026</span>
+          <h3>Record Numbers in Big Cat Population Recovery</h3>
+          <p>Protected areas report significant increases in leopard and lion sightings this quarter</p>
+        </article>
+        <article class="news-item">
+          <span class="date">May 5, 2026</span>
+          <h3>Community Conservation Programs Expand</h3>
+          <p>New partnerships bring technology and training to 15 additional wildlife reserves</p>
+        </article>
+      </div>
+      <a href="#" class="btn">View All News</a>
+    </div>
+  </section>
+
+  <!-- Conservation Mission -->
+  <section class="conservation" id="conservation">
+    <div class="container">
+      <h2>Our Conservation Mission</h2>
+      <div class="mission-content">
+        <div class="mission-text">
+          <h3>Protecting Wildlife Through Technology</h3>
+          <p>WildGuard combines cutting-edge AI detection, real-time monitoring, and community engagement to protect Africa's most precious wildlife. Our mission is to preserve biodiversity for future generations through science, innovation, and collaboration.</p>
+          <div class="mission-values">
+            <div class="value">
+              <span class="value-icon">🌍</span>
+              <h4>Global Impact</h4>
+              <p>Protecting species across multiple ecosystems</p>
+            </div>
+            <div class="value">
+              <span class="value-icon">🔬</span>
+              <h4>Scientific Excellence</h4>
+              <p>Data-driven conservation strategies</p>
+            </div>
+            <div class="value">
+              <span class="value-icon">🤝</span>
+              <h4>Community Partnership</h4>
+              <p>Working with local communities and rangers</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter Section -->
+  <section class="newsletter">
+    <div class="container">
+      <h2>Stay Updated</h2>
+      <p>Get the latest conservation news and wildlife updates</p>
+      <form class="newsletter-form" onsubmit="alert('Newsletter signup coming soon'); return false;">
+        <input type="email" placeholder="Your email address" required />
+        <button type="submit" class="btn">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>About WildGuard</h4>
+          <p>Advanced wildlife conservation platform combining AI detection, real-time monitoring, and scientific research.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="library.html">Species Library</a></li>
+            <li><a href="map.html">Park Map</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="#">Conservation Guide</a></li>
+            <li><a href="#">Research Papers</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Follow Us</h4>
+          <div class="social-links">
+            <a href="#">Twitter</a>
+            <a href="#">Facebook</a>
+            <a href="#">Instagram</a>
+            <a href="#">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 WildGuard. All rights reserved. Dedicated to wildlife conservation.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      const slides = document.querySelectorAll('#heroSlideshow .slide');
+      if(!slides || slides.length===0) return;
+      let i=0;
+      setInterval(()=>{ slides[i].classList.remove('active'); i=(i+1)%slides.length; slides[i].classList.add('active'); },5000);
+    })();
+  </script>
+  <script src="index-pro.js"></script>
+  </body>
+</html>

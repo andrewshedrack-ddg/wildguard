@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+  <rect width="100%" height="100%" fill="#0b5a2b"/>
+  <g fill="#f1be48">
+    <ellipse cx="250" cy="300" rx="160" ry="90"/>
+    <rect x="340" y="210" width="260" height="120" rx="40"/>
+    <circle cx="540" cy="200" r="60"/>
+  </g>
+  <text x="50" y="80" font-family="Poppins, sans-serif" font-size="48" fill="#ffffff">Elephant Habitat</text>
+</svg>

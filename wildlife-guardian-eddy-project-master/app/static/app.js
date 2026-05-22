@@ -828,27 +828,47 @@ function renderSlide(index) {
 }
 
 async function loadSlideshow() {
-  if (!backendEnabled) {
-    slideshowItems = [];
-    renderGallery(slideshowItems);
-    renderSlide(0);
-    return;
+  // If backend not configured, try to load a local slideshow manifest (static fallback)
+  slideshowItems = [];
+  if (backendEnabled) {
+    try {
+      const galleryRes = await fetch("/api/gallery?limit=24");
+      if (galleryRes.ok) {
+        const gallery = await galleryRes.json();
+        slideshowItems = Array.isArray(gallery) ? gallery : [];
+      }
+      if (!slideshowItems.length) {
+        const animalsRes = await fetch("/api/animals?limit=24");
+        const animals = animalsRes.ok ? await animalsRes.json() : [];
+        slideshowItems = Array.isArray(animals)
+          ? animals.map((a) => ({ species_name: a.species_name, scientific_name: a.scientific_name, conservation_status: a.conservation_status }))
+          : [];
+      }
+    } catch {
+      slideshowItems = [];
+    }
   }
-  try {
-    const galleryRes = await fetch("/api/gallery?limit=24");
-    if (galleryRes.ok) {
-      const gallery = await galleryRes.json();
-      slideshowItems = Array.isArray(gallery) ? gallery : [];
+
+  // If we still have no slideshow items, try loading the local `slideshow.json` manifest
+  if (!slideshowItems.length) {
+    try {
+      const manifestPath = `${getRepoBasePath() || ''}/slideshow.json`;
+      const mRes = await fetch(manifestPath.replace(/\/g, '/'));
+      if (mRes.ok) {
+        const manifest = await mRes.json();
+        if (Array.isArray(manifest) && manifest.length) {
+          slideshowItems = manifest.map((m) => ({
+            image_url: (m.image_url || '').startsWith('/') ? m.image_url : `${getRepoBasePath() || ''}/${m.image_url}`.replace(/\/+/g, '/'),
+            label: m.label,
+            scientific_name: m.scientific_name,
+            conservation_status: m.conservation_status,
+          }));
+        }
+      }
+    } catch (e) {
+      // manifest not available or invalid; leave slideshowItems empty
+      slideshowItems = slideshowItems || [];
     }
-    if (!slideshowItems.length) {
-      const animalsRes = await fetch("/api/animals?limit=24");
-      const animals = animalsRes.ok ? await animalsRes.json() : [];
-      slideshowItems = Array.isArray(animals)
-        ? animals.map((a) => ({ species_name: a.species_name, scientific_name: a.scientific_name, conservation_status: a.conservation_status }))
-        : [];
-    }
-  } catch {
-    slideshowItems = [];
   }
 
   renderGallery(slideshowItems);
