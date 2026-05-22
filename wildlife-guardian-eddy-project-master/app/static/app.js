@@ -408,7 +408,83 @@ function speakProfile(label, profile) {
 }
 
 async function loadModel() {
-  if (!localModel) localModel = await cocoSsd.load();
+  if (localModel) return localModel;
+
+  // If cocoSsd isn't present, attempt to load TF.js and coco-ssd dynamically from CDN.
+  if (!window.cocoSsd?.load) {
+    resultBox.textContent = "Loading AI model libraries...";
+    try {
+        // Prefer local vendor files if present (same-origin).
+        const localTf = "vendor/tf.min.js";
+        const localCoco = "vendor/coco-ssd.min.js";
+        const tryLoadLocal = async (url) => {
+          try {
+            const res = await fetch(url, { method: "HEAD" });
+            if (res.ok) {
+              await new Promise((resolve, reject) => {
+                const s = document.createElement("script");
+                s.src = url;
+                s.onload = resolve;
+                s.onerror = () => reject(new Error(`Failed to load local script ${url}`));
+                document.head.appendChild(s);
+              });
+              return true;
+            }
+          } catch {
+            // ignore network errors
+          }
+          return false;
+        };
+
+        // Attempt local vendor load for TF and coco-ssd
+        let loadedLocalTf = false;
+        try {
+          loadedLocalTf = await tryLoadLocal(localTf);
+        } catch {}
+
+        if (loadedLocalTf && !window.cocoSsd) {
+          // try loading local coco-ssd
+          const loadedLocalCoco = await tryLoadLocal(localCoco);
+          if (loadedLocalCoco) {
+            // local vendor loaded
+          }
+        }
+
+      // Load TensorFlow.js if missing
+        if (!window.tf) {
+          await new Promise((resolve, reject) => {
+            const s = document.createElement("script");
+            s.src = "https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@3.21.0/dist/tf.min.js";
+            s.onload = resolve;
+            s.onerror = () => reject(new Error("Failed to load tfjs"));
+            document.head.appendChild(s);
+          });
+        }
+
+      // Load coco-ssd model bundle
+        if (!window.cocoSsd?.load) {
+          await new Promise((resolve, reject) => {
+            const s2 = document.createElement("script");
+            s2.src = "https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd@2.2.2/dist/coco-ssd.min.js";
+            s2.onload = resolve;
+            s2.onerror = () => reject(new Error("Failed to load coco-ssd"));
+            document.head.appendChild(s2);
+          });
+        }
+    } catch (err) {
+      resultBox.textContent = "AI model libraries could not be loaded from network. Local scanning remains available.";
+      return null;
+    }
+  }
+
+  try {
+    localModel = await window.cocoSsd.load();
+    resultBox.textContent = "AI model ready.";
+    return localModel;
+  } catch (err) {
+    resultBox.textContent = "Failed to initialize AI model. Camera can still run for local scanning.";
+    return null;
+  }
 }
 
 function drawPredictions(predictions) {
@@ -785,13 +861,26 @@ async function loadSlideshow() {
 
 async function initQrCode() {
   const shareUrl = appPageUrl("/live");
+  if (!qrCanvas) return;
   if (window.QRCode?.toCanvas) {
     await window.QRCode.toCanvas(qrCanvas, shareUrl, {
       width: 180,
       margin: 1,
       color: { dark: "#0f1f15", light: "#f4f1df" },
     });
+    return;
   }
+
+  const context = qrCanvas.getContext("2d");
+  context.clearRect(0, 0, qrCanvas.width, qrCanvas.height);
+  context.fillStyle = "#f4f1df";
+  context.fillRect(0, 0, qrCanvas.width, qrCanvas.height);
+  context.fillStyle = "#0f1f15";
+  context.font = 'bold 14px Manrope, sans-serif';
+  context.textAlign = "center";
+  context.fillText("QR unavailable", qrCanvas.width / 2, qrCanvas.height / 2 - 6);
+  context.font = '12px Manrope, sans-serif';
+  context.fillText("Open /live", qrCanvas.width / 2, qrCanvas.height / 2 + 14);
 }
 
 function bluetoothRequestOptions(mode) {

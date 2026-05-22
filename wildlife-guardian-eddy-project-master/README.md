@@ -166,3 +166,13 @@ Result:
 - Frontend URL does not expire.
 - Backend URL does not rotate like tunnel links.
 - Dashboard/camera remains usable even if backend is temporarily unavailable.
+
+## Vendorizing frontend libraries (optional)
+
+If your environment blocks CDN requests, you can download required JS libraries (TensorFlow.js, coco-ssd, QRCode) into the frontend static folder and serve them locally. A helper PowerShell script is included:
+
+```powershell
+.\scripts\vendorize_libs.ps1
+```
+
+Vendor files will be saved to `app/static/vendor/`. After downloading, you may update pages to reference the local files (or let `app.js` dynamically load them when missing).
