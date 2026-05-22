@@ -1,0 +1,46 @@
+/* Local font stack. Place real .woff2 files in app/static/vendor/fonts/ */
+@font-face {
+  font-family: 'Poppins';
+  font-display: swap;
+  src: url('/static/vendor/fonts/Poppins-Regular.woff2') format('woff2');
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'Poppins';
+  font-display: swap;
+  src: url('/static/vendor/fonts/Poppins-Medium.woff2') format('woff2');
+  font-weight: 500;
+}
+@font-face {
+  font-family: 'Playfair Display';
+  font-display: swap;
+  src: url('/static/vendor/fonts/PlayfairDisplay-Bold.woff2') format('woff2');
+  font-weight: 700;
+}
+@font-face {
+  font-family: 'Cinzel';
+  font-display: swap;
+  src: url('/static/vendor/fonts/Cinzel-Regular.woff2') format('woff2');
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'Manrope';
+  font-display: swap;
+  src: url('/static/vendor/fonts/Manrope-Regular.woff2') format('woff2');
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-display: swap;
+  src: url('/static/vendor/fonts/JetBrainsMono-Regular.woff2') format('woff2');
+  font-weight: 400;
+}
+
+/* Fallback font stack for environments without vendored fonts */
+:root {
+  --ui-sans: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  --ui-serif: 'Playfair Display', Georgia, 'Times New Roman', Times, serif;
+  --ui-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
+}
+
+body { font-family: var(--ui-sans); }
