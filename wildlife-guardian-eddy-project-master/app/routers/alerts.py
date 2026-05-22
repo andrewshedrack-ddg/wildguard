@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from typing import List
 
@@ -22,3 +22,22 @@ def list_alerts(limit: int = 50, db: Session = Depends(get_db)):
         }
         for r in rows
     ]
+
+
+@router.post("/", status_code=201)
+def create_alert(payload: dict, db: Session = Depends(get_db)):
+    try:
+        a = Alert(
+            alert_type=payload.get("alert_type", "generic"),
+            message=payload.get("message", ""),
+            channel=payload.get("channel", "console"),
+            status=payload.get("status", "queued"),
+            detection_id=payload.get("detection_id", 0),
+        )
+        db.add(a)
+        db.commit()
+        db.refresh(a)
+        return {"id": a.id}
+    except Exception as e:
+        db.rollback()
+        raise HTTPException(status_code=500, detail=str(e))

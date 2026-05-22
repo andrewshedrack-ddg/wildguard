@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from typing import List
 
@@ -20,3 +20,20 @@ def list_species(limit: int = 100, db: Session = Depends(get_db)):
         }
         for r in rows
     ]
+
+
+@router.post("/", status_code=201)
+def create_species(payload: dict, db: Session = Depends(get_db)):
+    try:
+        s = GlobalSpeciesCatalog(
+            species_name=payload.get("species_name"),
+            common_name=payload.get("common_name", ""),
+            scientific_name=payload.get("scientific_name", ""),
+        )
+        db.add(s)
+        db.commit()
+        db.refresh(s)
+        return {"id": s.id}
+    except Exception as e:
+        db.rollback()
+        raise HTTPException(status_code=500, detail=str(e))
