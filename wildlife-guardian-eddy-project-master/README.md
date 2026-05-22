@@ -176,3 +176,14 @@ If your environment blocks CDN requests, you can download required JS libraries 
 ```
 
 Vendor files will be saved to `app/static/vendor/`. After downloading, you may update pages to reference the local files (or let `app.js` dynamically load them when missing).
+
+
+### Fonts vendoring
+
+To vendor Google Fonts locally (recommended for offline or restricted networks), run the PowerShell helper from the repo root (Windows):
+
+```powershell
+.\scripts\vendorize_fonts.ps1
+```
+
+This downloads referenced woff2 files into `app/static/vendor/fonts/` and the app will load `app/static/vendor/fonts.css` by default. If your environment blocks outbound access to Google Fonts, run the script on a machine with internet access and commit the `app/static/vendor/fonts/` files to the repo.
