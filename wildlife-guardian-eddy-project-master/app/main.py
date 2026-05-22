@@ -48,6 +48,10 @@ from app.schemas import (
     UserOut,
 )
 from app.services.alerts import process_alerts
+from fastapi.exceptions import RequestValidationError
+from fastapi.responses import JSONResponse
+import logging
+from app.routers import health as health_router
 
 settings = get_settings()
 
@@ -64,6 +68,24 @@ settings.animal_knowledge_path.mkdir(parents=True, exist_ok=True)
 settings.species_images_path.mkdir(parents=True, exist_ok=True)
 Base.metadata.create_all(bind=engine)
 
+# include health router
+app.include_router(health_router.router)
+
+# logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger("wildguard")
+
+
+@app.exception_handler(RequestValidationError)
+async def validation_exception_handler(request, exc):
+    return JSONResponse(status_code=422, content={"detail": exc.errors()})
+
+
+@app.exception_handler(Exception)
+async def general_exception_handler(request, exc):
+    logger.exception("Unhandled exception: %s", exc)
+    return JSONResponse(status_code=500, content={"detail": "Internal server error"})
+
 APP_DIR = Path(__file__).resolve().parent
 STATIC_DIR = APP_DIR / "static"
 
@@ -73,6 +95,18 @@ knowledge_base.bootstrap_profiles(detector.load_species_labels())
 app.mount("/static", StaticFiles(directory=str(STATIC_DIR)), name="static")
 app.mount("/media", StaticFiles(directory=str(settings.images_dir_path)), name="media")
 app.mount("/species-media", StaticFiles(directory=str(settings.species_images_path)), name="species-media")
+
+
+@app.on_event("startup")
+def on_startup():
+    # basic startup checks
+    try:
+        with engine.connect() as conn:
+            conn.execute(text("SELECT 1"))
+        logger.info("Database connected successfully")
+    except Exception as e:
+        logger.exception("Database connection failed at startup: %s", e)
+
 
 
 DEFAULT_HABITAT_HINTS: dict[str, tuple[str, float, float]] = {
