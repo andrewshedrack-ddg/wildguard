@@ -17,78 +17,129 @@
       <div class="nav-inner">
         <a class="nav-brand" href="/">
           <img src="https://images.unsplash.com/photo-1546182990-dffeafbe841d?auto=format&fit=crop&w=256&q=80" alt="WildGuard" onerror="this.onerror=null;this.src='/static/tiger-logo.svg';" />
-          <span>WildGuard</span>
-        </a>
-        <nav class="nav-links">
-          <a href="/">Home</a>
-          <a href="/dashboard">Dashboard</a>
-          <a href="/library">Library</a>
-          <a href="/history">History</a>
-          <a href="/map">Map</a>
-          <a href="/live">Live</a>
-        </nav>
-      </div>
-    </header>
-    <main class="layout single">
-      <section class="panel telemetry">
-        <div class="library-showcase">
-          <article class="library-hero">
-            <p class="section-eyebrow">Animal atlas</p>
-            <h2>Slideshow of wildlife intelligence</h2>
-            <p>Browse curated animal photography and live catalog intelligence before diving into the full searchable library.</p>
-            <div class="actions">
-              <button id="libraryPlayBtn" type="button">Play Slideshow</button>
-              <button id="libraryPauseBtn" type="button">Pause Slideshow</button>
-            </div>
-          </article>
-          <aside class="library-slideshow" id="librarySlideshow" aria-label="Featured animal slideshow">
-            <div class="library-slide active" style="background-image:url('/static/images/lion-hero.svg')">
-              <div class="library-slide-caption"><strong>Lion</strong> apex social predator, savanna specialist.</div>
-            </div>
-            <div class="library-slide" style="background-image:url('/static/images/elephant-hero.svg')">
-              <div class="library-slide-caption"><strong>Elephant</strong> complex memory, family-led herds, and migration routes.</div>
-            </div>
-            <div class="library-slide" style="background-image:url('/static/images/giraffe-hero.svg')">
-              <div class="library-slide-caption"><strong>Giraffe</strong> iconic browsing species, tall-scan silhouette.</div>
-            </div>
-          </aside>
-        </div>
-        <div class="panel-head">
-          <h1>Global Animal Library</h1>
-          <p>Interactive intelligence library across animals, reptiles, birds, insects, fungi, bacteria, and viruses.</p>
-        </div>
-        <div class="stack">
-          <div class="lookup-row">
-            <input id="librarySearch" type="text" placeholder="Search species, region, alias" />
-            <select id="libraryGroup">
-              <option value="">All Classes / Groups</option>
-              <option value="Mammalia">Mammalia</option>
-              <option value="Aves">Aves</option>
-              <option value="Reptilia">Reptilia</option>
-              <option value="Amphibia">Amphibia</option>
-              <option value="Insecta">Insecta</option>
-              <option value="Arachnida">Arachnida</option>
-              <option value="Actinopterygii">Fish</option>
-              <option value="Agaricomycetes">Fungi</option>
-              <option value="Gammaproteobacteria">Bacteria</option>
-              <option value="Pisoniviricetes">Virus</option>
-            </select>
-            <button id="librarySearchBtn" type="button">Search</button>
-          </div>
-          <div class="lookup-row">
-            <button id="librarySeedBtn" type="button">Seed Foundation Data</button>
-            <button id="librarySyncMammalsBtn" type="button">Sync Mammals</button>
-            <button id="librarySyncBirdsBtn" type="button">Sync Birds</button>
-            <button id="librarySyncInsectsBtn" type="button">Sync Insects</button>
-          </div>
-          <div id="libraryMeta" class="profile-box">Loading species...</div>
-        </div>
-        <div id="libraryGrid" class="gallery-grid large-grid"></div>
-        <div id="libraryDetail" class="profile-box">Select a species card for richer details and voice summary.</div>
-      </section>
-    </main>
-    <script src="/static/index-pro.js?v=20260523"></script>
-    <script src="/static/app.js?v=20260523" type="module"></script>
-    <script src="/static/library.js?v=20260523" type="module"></script>
-  </body>
-</html>
+          <!doctype html>
+          <html lang="en">
+            <head>
+              <meta charset="utf-8" />
+              <meta name="viewport" content="width=device-width,initial-scale=1" />
+              <title>WildGuard Animal Library</title>
+              <meta name="description" content="Search and browse animals, library entries, and species profiles in WildGuard." />
+              <link rel="icon" href="/static/tiger-logo.svg" />
+              <link rel="preconnect" href="https://fonts.googleapis.com" />
+              <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+              <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800&family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet" />
+              <link rel="stylesheet" href="/static/styles-pro.css" />
+            </head>
+            <body class="wg-page wg-library-page">
+              <header class="kws-topbar">
+                <div class="kws-shell kws-topbar-inner">
+                  <a class="kws-brand" href="/">
+                    <img src="/static/tiger-logo.svg" alt="WildGuard" />
+                    <span>WILDGUARD</span>
+                  </a>
+                  <nav class="kws-nav" id="kwsNav">
+                    <a href="/">Home</a>
+                    <a href="/dashboard">Dashboard</a>
+                    <a href="/library" class="active">Library</a>
+                    <a href="/map">Map</a>
+                    <a href="/live">Live</a>
+                    <a href="/history">History</a>
+                  </nav>
+                  <button class="kws-menu-btn" id="kwsMenuBtn" type="button" aria-label="Toggle navigation">☰</button>
+                </div>
+              </header>
+
+              <main class="kws-shell kws-library-shell">
+                <section class="kws-hero kws-library-hero">
+                  <div class="kws-hero-grid kws-library-hero-grid">
+                    <div class="kws-hero-copy">
+                      <p class="kws-eyebrow">WildSight Wildlife Library</p>
+                      <h1>Browse and learn about wildlife with a clear field-guide layout.</h1>
+                      <p class="kws-lead">The library keeps the KWS-inspired white-and-green composition: search, filters, featured animals, categories, and a large guide panel beside recent sightings.</p>
+
+                      <div class="kws-searchbar">
+                        <span>⌕</span>
+                        <input id="librarySearch" type="text" placeholder="Search species, region, alias" />
+                      </div>
+
+                      <div class="kws-tabs kws-tabs-wrap">
+                        <select id="libraryGroup" class="kws-select">
+                          <option value="">All Classes / Groups</option>
+                          <option value="Mammalia">Mammalia</option>
+                          <option value="Aves">Aves</option>
+                          <option value="Reptilia">Reptilia</option>
+                          <option value="Amphibia">Amphibia</option>
+                          <option value="Insecta">Insecta</option>
+                          <option value="Arachnida">Arachnida</option>
+                          <option value="Actinopterygii">Fish</option>
+                          <option value="Agaricomycetes">Fungi</option>
+                          <option value="Gammaproteobacteria">Bacteria</option>
+                          <option value="Pisoniviricetes">Virus</option>
+                        </select>
+                        <button id="librarySearchBtn" type="button">Search</button>
+                      </div>
+
+                      <div class="kws-actions">
+                        <button id="librarySeedBtn" class="kws-btn kws-btn-primary" type="button">Seed Foundation Data</button>
+                        <button id="librarySyncMammalsBtn" class="kws-btn kws-btn-secondary" type="button">Sync Mammals</button>
+                        <button id="librarySyncBirdsBtn" class="kws-btn kws-btn-secondary" type="button">Sync Birds</button>
+                        <button id="librarySyncInsectsBtn" class="kws-btn kws-btn-secondary" type="button">Sync Insects</button>
+                      </div>
+                    </div>
+
+                    <aside class="kws-hero-guide kws-library-showcase">
+                      <div class="library-slideshow" id="librarySlideshow" aria-label="Featured animal slideshow">
+                        <div class="library-slide active" style="background-image:url('/static/images/tiger-hero.svg')">
+                          <div class="library-slide-caption"><strong>Bengal Tiger</strong> apex predator, forest and grassland specialist.</div>
+                        </div>
+                        <div class="library-slide" style="background-image:url('/static/images/elephant-hero.svg')">
+                          <div class="library-slide-caption"><strong>African Elephant</strong> family-led herds, migration routes, and memory-rich behavior.</div>
+                        </div>
+                        <div class="library-slide" style="background-image:url('/static/images/eagle-hero.svg')">
+                          <div class="library-slide-caption"><strong>Bald Eagle</strong> bold raptor profile and wetland sentinel.</div>
+                        </div>
+                      </div>
+                      <div id="libraryMeta" class="profile-box kws-library-meta">Loading species...</div>
+                    </aside>
+                  </div>
+                </section>
+
+                <section class="kws-surface-grid kws-library-grid-shell">
+                  <div class="kws-panel kws-panel-wide">
+                    <div class="kws-section-head">
+                      <p class="kws-eyebrow dark">Featured Animals</p>
+                      <h2>Cards inspired by the reference library page</h2>
+                    </div>
+                    <div id="libraryGrid" class="gallery-grid large-grid"></div>
+                  </div>
+
+                  <aside class="kws-panel">
+                    <div class="kws-section-head">
+                      <p class="kws-eyebrow dark">Species Guide</p>
+                      <h2>Bengal Tiger</h2>
+                    </div>
+                    <div id="libraryDetail" class="profile-box kws-library-detail">Select a species card for richer details and voice summary.</div>
+                  </aside>
+                </section>
+
+                <section class="kws-shell kws-library-tail">
+                  <div class="kws-panel">
+                    <div class="kws-section-head">
+                      <p class="kws-eyebrow dark">Quick Categories</p>
+                      <h2>Browse by type</h2>
+                    </div>
+                    <div class="kws-category-grid">
+                      <div class="kws-category">Mammals</div>
+                      <div class="kws-category">Birds</div>
+                      <div class="kws-category">Reptiles</div>
+                      <div class="kws-category">Amphibians</div>
+                    </div>
+                  </div>
+                </section>
+              </main>
+
+              <script src="/static/index-pro.js?v=20260523"></script>
+              <script src="/static/app.js?v=20260523" type="module"></script>
+              <script src="/static/library.js?v=20260523" type="module"></script>
+            </body>
+          </html>

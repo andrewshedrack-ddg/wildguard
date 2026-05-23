@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-label="Bald eagle illustration">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0d1a22"/>
+      <stop offset="55%" stop-color="#244766"/>
+      <stop offset="100%" stop-color="#8bb2d1"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="60%" cy="28%" r="68%">
+      <stop offset="0%" stop-color="#f5fbff" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#f5fbff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bg)"/>
+  <circle cx="800" cy="200" r="320" fill="url(#glow)"/>
+  <path d="M0 585c126-38 238-43 334-17 90 24 176 57 278 60 109 4 214-23 327-55 124-36 213-42 261-31v258H0z" fill="#1d2f34"/>
+  <g transform="translate(168 122)">
+    <path d="M471 174c-34 2-66 15-94 40-26 24-46 54-59 90l-18 48-48 10c-37 8-62 31-74 70-10 32-7 62 9 90 15 27 40 46 73 56 32 9 68 11 108 6 39-5 80-18 122-38 42-20 84-48 126-84 41-35 77-70 109-105 35-38 59-67 74-87l-63 4c-24 2-43-3-58-14-15-11-25-27-30-48-7-27-23-48-47-63-24-16-51-24-80-25z" fill="#f5f7fb"/>
+    <path d="M486 230c-31 2-60 15-84 38-23 21-40 47-52 78l-16 41-41 8c-31 6-52 24-62 56-8 27-6 52 8 75 13 22 34 38 62 46 27 8 60 10 97 6 36-5 73-16 112-35 39-18 79-44 118-78 38-33 71-65 100-96 31-34 52-59 65-76l-54 3c-20 1-36-2-49-11-12-8-21-22-25-40-6-23-19-41-39-54-20-13-43-20-68-21z" fill="#d7a74f" opacity="0.98"/>
+    <path d="M248 394c36 0 69 13 99 39 20 17 37 37 52 59 22 32 47 56 74 72 34 20 71 31 112 31 43 0 86-12 129-37" fill="none" stroke="#fff" stroke-opacity="0.35" stroke-width="18" stroke-linecap="round"/>
+    <circle cx="433" cy="225" r="22" fill="#1d1c19"/>
+    <circle cx="404" cy="217" r="11" fill="#fff"/>
+    <path d="M458 250l66 18-56 37" fill="#f1b83b"/>
+  </g>
+</svg>

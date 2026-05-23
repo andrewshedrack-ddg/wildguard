@@ -4,41 +4,33 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>WildGuard Dashboard</title>
+    <link rel="icon" href="/static/tiger-logo.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Manrope:wght@400;500;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
-    <link rel="icon" href="/static/tiger-logo.svg" />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800&family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/static/styles-pro.css" />
   </head>
-  <body>
-    <div id="slideshowBg" class="slideshow-bg" aria-hidden="true"></div>
-    <div class="overlay-mask" aria-hidden="true"></div>
-    <header class="site-nav">
-      <div class="nav-inner">
-        <a class="nav-brand" href="/">
-          <img src="/static/tiger-logo.svg" alt="WildGuard" onerror="this.onerror=null;this.src='/static/tiger-logo.svg';" />
-          <span>WildGuard</span>
+  <body class="wg-page wg-dashboard-page">
+    <header class="kws-topbar">
+      <div class="kws-shell kws-topbar-inner">
+        <a class="kws-brand" href="/">
+          <img src="/static/tiger-logo.svg" alt="WildGuard" />
+          <span>WILDGUARD</span>
         </a>
-        <nav class="nav-links">
+        <nav class="kws-nav" id="kwsNav">
           <a href="/">Home</a>
-          <a href="/dashboard">Dashboard</a>
+          <a href="/dashboard" class="active">Dashboard</a>
           <a href="/library">Library</a>
-          <a href="/history">History</a>
           <a href="/map">Map</a>
           <a href="/live">Live</a>
+          <a href="/history">History</a>
         </nav>
-        <button id="toggleSidebar" class="ghost-btn" aria-label="Toggle sidebar">☰ Menu</button>
+        <button id="toggleSidebar" class="kws-menu-btn" type="button" aria-label="Toggle sidebar">☰</button>
       </div>
     </header>
-    <div class="floating-icons" aria-hidden="true">
-      <span>🦁</span>
-      <span>🐘</span>
-      <span>🦒</span>
-      <span>🦅</span>
-    </div>
 
     <div id="authGate" class="auth-gate hidden">
-      <div class="auth-card">
+      <div class="auth-card kws-panel">
         <h2>Welcome to WildGuard</h2>
         <p>Sign in is required to use camera and scanning features.</p>
         <div class="auth-tabs">
@@ -54,8 +46,8 @@
       </div>
     </div>
 
-    <main class="layout">
-      <aside id="sideMenu" class="side-menu" aria-hidden="false">
+    <main class="kws-shell kws-dashboard-shell">
+      <aside id="sideMenu" class="kws-sidebar">
         <div class="menu-section">
           <h4>Main</h4>
           <a href="/dashboard"><span class="menu-icon">🏠</span><span>Overview</span></a>
@@ -76,140 +68,169 @@
           <a href="/admin"><span class="menu-icon">🛠️</span><span>Admin</span></a>
         </div>
       </aside>
-      <header class="hero panel">
-        <div class="brand-row">
-          <div class="logo-badge" aria-hidden="true"><img src="/static/tiger-logo.svg" alt="WildGuard tiger logo" /></div>
-          <div>
-            <h1>WildGuard Command Center</h1>
-            <p>Advanced wildlife detection, inventory, library, and cross-device live intelligence.</p>
-          </div>
-        </div>
-        <nav class="quick-links">
-          <a href="#scanArea">Scan</a>
-          <a href="#dataArea">Data</a>
-          <a href="/library">Library</a>
-          <a href="/history">History</a>
-          <a href="/map">Map</a>
-          <a href="/live">Live Monitor</a>
-          <a href="/onboarding">Phone Setup</a>
-          <button id="openSettings" type="button" class="ghost-btn">Settings</button>
-          <button id="logoutBtn" type="button" class="ghost-btn">Logout</button>
-        </nav>
 
-        <section class="mission-grid" aria-label="Mission Control Metrics">
-          <article class="mission-card">
-            <span class="label">Total Sightings</span>
-            <strong id="mcTotalSightings">0</strong>
-          </article>
-          <article class="mission-card">
-            <span class="label">Species Diversity</span>
-            <strong id="mcSpeciesDiversity">0</strong>
-          </article>
-          <article class="mission-card">
-            <span class="label">Risk Score</span>
-            <strong id="mcRiskScore">0</strong>
-          </article>
-          <article class="mission-card">
-            <span class="label">Model Health</span>
-            <strong id="mcHealthScore">0</strong>
-          </article>
-          <article class="mission-card mission-wide">
-            <span class="label">Predictive Signal</span>
-            <strong id="mcSignalText">Initializing wildlife intelligence...</strong>
-          </article>
+      <section class="kws-dashboard-main">
+        <header class="kws-hero kws-dashboard-hero">
+          <div class="kws-hero-grid kws-dashboard-hero-grid">
+            <div class="kws-hero-copy">
+              <p class="kws-eyebrow">Wildlife Explorer Dashboard</p>
+              <h1>WildGuard Command Center</h1>
+              <p class="kws-lead">Mission summary, live scanning, guided tours, and species intelligence under one forest-green editorial system.</p>
+              <div class="kws-actions">
+                <a class="kws-btn kws-btn-primary" href="/live">Start Camera</a>
+                <a class="kws-btn kws-btn-secondary" href="/library">Open Library</a>
+              </div>
+            </div>
+            <aside class="kws-dashboard-banner">
+              <img src="/static/images/wildguard-banner.svg" alt="WildGuard savanna banner" />
+            </aside>
+          </div>
+        </header>
+
+        <section class="kws-stats-row" aria-label="Mission Control Metrics">
+          <article class="kws-stat-card"><span class="label">Total Sightings</span><strong id="mcTotalSightings">0</strong></article>
+          <article class="kws-stat-card"><span class="label">Species Diversity</span><strong id="mcSpeciesDiversity">0</strong></article>
+          <article class="kws-stat-card"><span class="label">Risk Score</span><strong id="mcRiskScore">0</strong></article>
+          <article class="kws-stat-card"><span class="label">Model Health</span><strong id="mcHealthScore">0</strong></article>
         </section>
-      </header>
 
-      <section id="scanArea" class="panel live-feed">
-        <div class="panel-head">
-          <h2>🎥 AI Scan Console</h2>
-          <p>Start camera scanning manually when you are ready.</p>
-        </div>
+        <section class="kws-dashboard-grid">
+          <div class="kws-dashboard-col kws-dashboard-col-main">
+            <section id="scanArea" class="kws-panel">
+              <div class="panel-head kws-section-head">
+                <p class="kws-eyebrow dark">AI Scan Console</p>
+                <h2>Animal scan in progress</h2>
+                <p>Start camera scanning manually when you are ready.</p>
+              </div>
 
-        <div class="video-wrap" style="position:relative;margin:1.2rem 0;border-radius:10px;overflow:hidden;box-shadow:0 12px 30px rgba(0,0,0,0.15);">
-          <video id="video" autoplay playsinline muted style="width:100%;height:auto;display:block;background:#000;"></video>
-          <canvas id="overlay" style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;"></canvas>
-          <div id="scanPulse" class="scan-pulse" aria-hidden="true"></div>
-        </div>
+              <div class="video-wrap kws-video-wrap">
+                <video id="video" autoplay playsinline muted></video>
+                <canvas id="overlay"></canvas>
+                <div id="scanPulse" class="scan-pulse" aria-hidden="true"></div>
+              </div>
 
-        <div class="lookup-row" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.8rem;margin-bottom:1rem;">
-          <select id="cameraSelect" style="padding:0.6rem;border-radius:6px;border:2px solid #dae5dc;font-family:inherit;"></select>
-          <button id="refreshCameras" class="btn">🔄 Refresh Cameras</button>
-          <button id="connectExternalCamera" class="btn">📷 External Camera</button>
-        </div>
-        <p id="externalCameraHint" class="tiny-note" style="margin-bottom:1rem;">
-          Tip: For Sony/Canon/Nikon cameras use USB cable + webcam utility/capture card, then click Connect External Camera.
-        </p>
+              <div class="lookup-row kws-lookup-grid">
+                <select id="cameraSelect"></select>
+                <button id="refreshCameras" class="kws-btn kws-btn-secondary" type="button">Refresh Cameras</button>
+                <button id="connectExternalCamera" class="kws-btn kws-btn-secondary" type="button">External Camera</button>
+              </div>
+              <p id="externalCameraHint" class="tiny-note">Tip: For Sony/Canon/Nikon cameras use USB cable + webcam utility/capture card, then click Connect External Camera.</p>
 
-        <div class="actions" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:0.8rem;margin-bottom:1.5rem;">
-          <button id="startCamera" class="btn" style="background:linear-gradient(135deg,#22c55e,#16a34a);border-color:#16a34a;">▶️ Start Camera</button>
-          <button id="stopCamera" class="btn" style="background:linear-gradient(135deg,#ef4444,#dc2626);border-color:#dc2626;">⏹ Stop Camera</button>
-          <button id="toggleAnimalMode" class="btn">🐾 Animal-Only</button>
-          <button id="toggleVoice" class="btn">🔊 Voice On</button>
-          <button id="testVoice" class="btn">🎵 Test Voice</button>
-        </div>
+              <div class="actions kws-actions-grid">
+                <button id="startCamera" class="kws-btn kws-btn-primary" type="button">Start Camera</button>
+                <button id="stopCamera" class="kws-btn kws-btn-secondary" type="button">Stop Camera</button>
+                <button id="toggleAnimalMode" class="kws-btn kws-btn-secondary" type="button">Animal-Only</button>
+                <button id="toggleVoice" class="kws-btn kws-btn-secondary" type="button">Voice On</button>
+                <button id="testVoice" class="kws-btn kws-btn-secondary" type="button">Test Voice</button>
+              </div>
 
-        <div class="results" style="background:linear-gradient(135deg,rgba(11,90,43,0.05),rgba(240,165,0,0.05));padding:1.2rem;border-radius:8px;border-left:4px solid var(--accent);">
-          <h3>📊 Immediate Feedback</h3>
-          <pre id="resultBox" style="margin:0;font-size:0.9rem;color:var(--text);overflow-x:auto;">Waiting for camera...</pre>
-        </div>
-      </section>
+              <div class="kws-result-box">
+                <h3>Immediate Feedback</h3>
+                <pre id="resultBox">Waiting for camera...</pre>
+              </div>
+            </section>
 
-      <section id="dataArea" class="panel telemetry">
-        <div class="stack">
-          <h2>Animal Knowledge</h2>
-          <div class="lookup-row">
-            <input id="speciesSearch" type="text" placeholder="Search species (e.g. tiger)" />
-            <button id="searchSpecies">Lookup</button>
+            <section class="kws-two-up">
+              <article class="kws-panel kws-card-photo">
+                <div class="kws-section-head">
+                  <p class="kws-eyebrow dark">Recent Sightings</p>
+                  <h2>Latest detections</h2>
+                </div>
+                <img src="/static/images/tiger-hero.svg" alt="Recent animal sighting" />
+                <a class="kws-btn kws-btn-primary" href="/history">View details</a>
+              </article>
+              <article class="kws-panel kws-card-photo">
+                <div class="kws-section-head">
+                  <p class="kws-eyebrow dark">Today's Tour</p>
+                  <h2>Safari Adventure</h2>
+                </div>
+                <img src="/static/images/wildguard-banner.svg" alt="Safari tour" />
+                <a class="kws-btn kws-btn-secondary" href="/live">Start tour</a>
+              </article>
+            </section>
+
+            <section class="kws-two-up">
+              <article class="kws-panel">
+                <div class="kws-section-head"><p class="kws-eyebrow dark">Animal Scan Activity</p><h2>Trend snapshot</h2></div>
+                <div class="kws-chart-box">The live chart renders here from existing dashboard data.</div>
+              </article>
+              <article class="kws-panel">
+                <div class="kws-section-head"><p class="kws-eyebrow dark">Environmental Conditions</p><h2>Field conditions</h2></div>
+                <ul class="kws-conditions">
+                  <li><strong>27°C</strong><span>Temperature</span></li>
+                  <li><strong>48%</strong><span>Humidity</span></li>
+                  <li><strong>12 km/h</strong><span>Wind</span></li>
+                </ul>
+              </article>
+            </section>
           </div>
-          <div id="animalProfile" class="profile-box">Scan an animal or search a species to view stored profile details.</div>
-        </div>
 
-        <div class="stack">
-          <h2>Device Link & Nearby Scan</h2>
-          <div class="qr-wrap">
-            <canvas id="qrCanvas" width="180" height="180"></canvas>
-            <p class="tiny-note">Use this QR to pair another device through the internet live link.</p>
-          </div>
-          <div class="actions">
-            <select id="bluetoothScanMode" aria-label="Bluetooth scan mode">
-              <option value="general">General devices</option>
-              <option value="wildlife">Wildlife sensors first</option>
-              <option value="wearable">Wearables first</option>
-            </select>
-            <button id="scanBluetooth">Scan Nearby Bluetooth</button>
-          </div>
-          <div id="connectStatus" class="profile-box">Nearby scan not started.</div>
-        </div>
+          <aside class="kws-dashboard-col kws-dashboard-col-side" id="dataArea">
+            <section class="kws-panel">
+              <div class="kws-section-head">
+                <p class="kws-eyebrow dark">Animal Knowledge</p>
+                <h2>Species lookup</h2>
+              </div>
+              <div class="lookup-row kws-lookup-row">
+                <input id="speciesSearch" type="text" placeholder="Search species (e.g. tiger)" />
+                <button id="searchSpecies" class="kws-btn kws-btn-primary" type="button">Lookup</button>
+              </div>
+              <div id="animalProfile" class="profile-box">Scan an animal or search a species to view stored profile details.</div>
+            </section>
 
-        <div class="stack">
-          <h2>Wildlife Slideshow</h2>
-          <div id="slideMeta" class="profile-box">Loading gallery...</div>
-          <div id="galleryGrid" class="gallery-grid"></div>
-        </div>
+            <section class="kws-panel">
+              <div class="kws-section-head">
+                <p class="kws-eyebrow dark">Device Link</p>
+                <h2>Pair another device</h2>
+              </div>
+              <div class="qr-wrap kws-qr-wrap">
+                <canvas id="qrCanvas" width="180" height="180"></canvas>
+                <p class="tiny-note">Use this QR to pair another device through the internet live link.</p>
+              </div>
+              <div class="actions kws-actions-grid single-row">
+                <select id="bluetoothScanMode" aria-label="Bluetooth scan mode">
+                  <option value="general">General devices</option>
+                  <option value="wildlife">Wildlife sensors first</option>
+                  <option value="wearable">Wearables first</option>
+                </select>
+                <button id="scanBluetooth" class="kws-btn kws-btn-secondary" type="button">Scan Nearby Bluetooth</button>
+              </div>
+              <div id="connectStatus" class="profile-box">Nearby scan not started.</div>
+            </section>
 
-        <div class="stack">
-          <h2>Capture Inventory</h2>
-          <ul id="inventoryList"></ul>
-        </div>
+            <section class="kws-panel">
+              <div class="kws-section-head">
+                <p class="kws-eyebrow dark">Wildlife Slideshow</p>
+                <h2>Feature gallery</h2>
+              </div>
+              <div id="slideMeta" class="profile-box">Loading gallery...</div>
+              <div id="galleryGrid" class="gallery-grid"></div>
+            </section>
 
-        <div class="stack">
-          <h2>Recent Alerts</h2>
-          <ul id="alertsList"></ul>
-        </div>
+            <section class="kws-panel">
+              <div class="kws-section-head"><p class="kws-eyebrow dark">Capture Inventory</p><h2>Field stock</h2></div>
+              <ul id="inventoryList"></ul>
+            </section>
 
-        <div class="stack">
-          <h2>Recent Detections</h2>
-          <ul id="detectionsList"></ul>
-        </div>
+            <section class="kws-panel">
+              <div class="kws-section-head"><p class="kws-eyebrow dark">Recent Alerts</p><h2>Alert feed</h2></div>
+              <ul id="alertsList"></ul>
+            </section>
+
+            <section class="kws-panel">
+              <div class="kws-section-head"><p class="kws-eyebrow dark">Recent Detections</p><h2>Timeline</h2></div>
+              <ul id="detectionsList"></ul>
+            </section>
+          </aside>
+        </section>
       </section>
     </main>
 
     <div id="settingsPanel" class="settings-panel hidden" role="dialog" aria-modal="true">
-      <div class="settings-card">
+      <div class="settings-card kws-panel">
         <div class="settings-head">
           <h2>Appearance & Voice Settings</h2>
-          <button id="closeSettings" type="button" class="ghost-btn">Close</button>
+          <button id="closeSettings" type="button" class="kws-btn kws-btn-secondary">Close</button>
         </div>
         <label>
           Theme Tone
@@ -234,19 +255,8 @@
       </div>
     </div>
 
-    <script src="vendor/tf.min.js"></script>
-    <script src="vendor/coco-ssd.min.js"></script>
-    <script>
-      // Simple rotating background slideshow for dashboard
-      (function(){
-        const imgs = ['/static/images/slideshow/elephant.svg','/static/images/slideshow/lion.svg','/static/images/slideshow/zebra.svg'];
-        const el = document.getElementById('slideshowBg');
-        if(!el) return;
-        let i=0; el.style.backgroundSize='cover'; el.style.backgroundPosition='center';
-        function show(){ el.style.backgroundImage = `url(${imgs[i]})`; i=(i+1)%imgs.length; }
-        show(); setInterval(show,6000);
-      })();
-    </script>
+    <script src="/static/vendor/tf.min.js"></script>
+    <script src="/static/vendor/coco-ssd.min.js"></script>
     <script src="/static/index-pro.js"></script>
     <script src="/static/app.js" type="module"></script>
   </body>

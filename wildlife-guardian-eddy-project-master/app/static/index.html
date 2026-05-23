@@ -3,178 +3,235 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>WildGuard | Protecting Nature's Wonders</title>
-    <meta name="description" content="WildGuard is an AI wildlife conservation platform for detections, species profiles, maps, and live field monitoring." />
+    <title>WildGuard | Wildlife Library</title>
+    <meta name="description" content="WildGuard is a wildlife conservation platform with species library, dashboard, live detection, and public Pages access." />
     <link rel="icon" href="/static/tiger-logo.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800&family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/static/styles-pro.css" />
   </head>
-  <body class="wg-site">
-    <header class="wg-nav">
-      <div class="wg-container wg-nav-row">
-        <a class="wg-brand" href="./index.html" aria-label="WildGuard home">
-          <img src="/static/tiger-logo.svg" alt="WildGuard" class="wg-brand-mark" />
-          <span class="wg-brand-text">WildGuard</span>
-          <span class="wg-brand-pill">AI</span>
+  <body class="wg-page wg-home-page">
+    <header class="kws-topbar">
+      <div class="kws-shell kws-topbar-inner">
+        <a class="kws-brand" href="./index.html" aria-label="WildGuard home">
+          <img src="/static/tiger-logo.svg" alt="WildGuard" />
+          <span>WILDGUARD</span>
         </a>
 
-        <nav class="wg-nav-links" id="wgNavLinks">
+        <nav class="kws-nav" id="kwsNav">
+          <a href="./index.html" class="active">Home</a>
+          <a href="./dashboard.html">Dashboard</a>
           <a href="./library.html">Library</a>
           <a href="./map.html">Map</a>
           <a href="./live.html">Live</a>
           <a href="./history.html">History</a>
-          <a href="./dashboard.html" class="wg-nav-cta">Dashboard</a>
+          <a href="./settings.html">Settings</a>
         </nav>
 
-        <button class="wg-nav-toggle" id="wgNavToggle" aria-label="Toggle navigation">☰</button>
+        <button class="kws-menu-btn" id="kwsMenuBtn" type="button" aria-label="Toggle navigation">☰</button>
       </div>
     </header>
 
     <main>
-      <section class="wg-hero">
-        <div class="wg-container wg-hero-grid">
-          <div class="wg-hero-copy">
-            <p class="wg-kicker">Wildlife intelligence platform</p>
-            <h1>AI wildlife monitoring with a clean conservation interface.</h1>
-            <p class="wg-lead">One public link for the full site. Track detections, browse species, open the live camera, and keep everything organized for field teams and partners.</p>
+      <section class="kws-hero kws-shell">
+        <div class="kws-hero-grid">
+          <div class="kws-hero-copy">
+            <p class="kws-eyebrow">WildSight Wildlife Library</p>
+            <h1>Explore and learn about wildlife in a full conservation atlas.</h1>
+            <p class="kws-lead">WildGuard brings the home page, dashboard, live camera, and wildlife library into one connected public link. The layout follows the white-and-green field guide style from the reference screens.</p>
 
-            <div class="wg-actions">
-              <a class="wg-btn wg-btn-primary" href="./dashboard.html">Open Dashboard</a>
-              <a class="wg-btn wg-btn-secondary" href="./live.html">Open Live Camera</a>
+            <div class="kws-searchbar" aria-label="Search species">
+              <span>⌕</span>
+              <input type="search" placeholder="Search for an animal..." aria-label="Search for an animal" />
             </div>
 
-            <div class="wg-pills" aria-label="Platform highlights">
-              <span>24/7 monitoring</span>
-              <span>AI detection</span>
-              <span>Species library</span>
-              <span>Map + history</span>
+            <div class="kws-tabs" aria-label="Animal filters">
+              <button type="button" class="active">All</button>
+              <button type="button">Mammals</button>
+              <button type="button">Birds</button>
+              <button type="button">Reptiles</button>
+              <button type="button">Amphibians</button>
+            </div>
+
+            <div class="kws-actions">
+              <a class="kws-btn kws-btn-primary" href="./dashboard.html">Open Dashboard</a>
+              <a class="kws-btn kws-btn-secondary" href="./library.html">Browse Library</a>
             </div>
           </div>
 
-          <aside class="wg-hero-panel" aria-label="Animal slideshow">
-            <div class="wg-hero-panel-head">
-              <span class="wg-dot"></span>
-              <span>Featured wildlife slideshow</span>
+          <aside class="kws-hero-guide">
+            <div class="kws-guide-panel kws-hero-slide active" id="heroSlideOne">
+              <img src="/static/images/tiger-hero.svg" alt="Bengal tiger" />
+            </div>
+            <div class="kws-guide-panel kws-hero-slide" id="heroSlideTwo">
+              <img src="/static/images/elephant-hero.svg" alt="African elephant" />
+            </div>
+            <div class="kws-guide-panel kws-hero-slide" id="heroSlideThree">
+              <img src="/static/images/eagle-hero.svg" alt="Bald eagle" />
             </div>
 
-            <div class="wg-slideshow" id="wgSlideshow">
-              <img class="wg-slide active" src="/static/images/lion-hero.svg" alt="Lion slideshow image" />
-              <img class="wg-slide" src="/static/images/elephant-hero.svg" alt="Elephant slideshow image" />
-              <img class="wg-slide" src="/static/images/giraffe-hero.svg" alt="Giraffe slideshow image" />
-              <img class="wg-slide" src="/static/images/zebra-hero.svg" alt="Zebra slideshow image" />
-              <img class="wg-slide" src="/static/images/leopard-hero.svg" alt="Leopard slideshow image" />
-              <div class="wg-slideshow-overlay"></div>
-            </div>
-
-            <div class="wg-hero-panel-foot">
-              <div>
-                <strong>Field-ready</strong>
-                <span>Remote camera and detection workflows</span>
+            <div class="kws-guide-card">
+              <p class="kws-mini-eyebrow">Species Guide: Bengal Tiger</p>
+              <h2>Panthera tigris</h2>
+              <div class="kws-guide-row"><strong>Overview</strong><span>The Bengal tiger is the largest tiger subspecies, found primarily in India and Bangladesh.</span></div>
+              <div class="kws-guide-row"><strong>Habitat</strong><span>Dense forests, grasslands, and mangroves.</span></div>
+              <div class="kws-guide-row"><strong>Diet</strong><span>Carnivorous: deer, wild boar, and other large prey.</span></div>
+              <div class="kws-guide-row"><strong>Conservation Status</strong><span class="danger">Status: Endangered</span></div>
+              <div class="kws-guide-actions">
+                <a class="kws-btn kws-btn-primary" href="./library.html">More Info</a>
+                <a class="kws-btn kws-btn-secondary" href="./live.html">Listen to Calls</a>
               </div>
-              <a href="./library.html">Browse species</a>
             </div>
           </aside>
         </div>
       </section>
 
-      <section class="wg-section">
-        <div class="wg-container">
-          <div class="wg-section-head">
-            <p class="wg-kicker">What the site includes</p>
-            <h2>Everything in one place</h2>
+      <section class="kws-shell kws-surface-grid">
+        <div class="kws-panel kws-panel-wide">
+          <div class="kws-section-head">
+            <p class="kws-eyebrow dark">Featured Animals</p>
+            <h2>Wildlife cards built like a field guide</h2>
           </div>
+          <div class="kws-feature-grid">
+            <article class="kws-animal-card card-lion">
+              <img src="/static/images/lion-hero.svg" alt="African Elephant" />
+              <span>African Elephant</span>
+            </article>
+            <article class="kws-animal-card card-tiger">
+              <img src="/static/images/tiger-hero.svg" alt="Bengal Tiger" />
+              <span>Bengal Tiger</span>
+            </article>
+            <article class="kws-animal-card card-eagle">
+              <img src="/static/images/eagle-hero.svg" alt="Bald Eagle" />
+              <span>Bald Eagle</span>
+            </article>
+            <article class="kws-animal-card card-frog">
+              <img src="/static/images/frog-hero.svg" alt="Green Tree Frog" />
+              <span>Green Tree Frog</span>
+            </article>
+          </div>
+        </div>
 
-          <div class="wg-card-grid wg-card-grid-4">
-            <article class="wg-card">
-              <h3>Live camera</h3>
-              <p>Capture and send images to the detection API from your browser.</p>
+        <div class="kws-panel">
+          <div class="kws-section-head">
+            <p class="kws-eyebrow dark">Animal Categories</p>
+            <h2>Quick navigation</h2>
+          </div>
+          <div class="kws-category-grid">
+            <div class="kws-category">Mammals</div>
+            <div class="kws-category">Birds</div>
+            <div class="kws-category">Reptiles</div>
+            <div class="kws-category">Amphibians</div>
+          </div>
+        </div>
+
+        <div class="kws-panel kws-panel-wide">
+          <div class="kws-section-head">
+            <p class="kws-eyebrow dark">Popular Species</p>
+            <h2>Local gallery highlight</h2>
+          </div>
+          <div class="kws-popular-grid">
+            <article class="kws-popular-card">
+              <img src="/static/images/tiger-hero.svg" alt="Leopard" />
+              <span>Leopard</span>
             </article>
-            <article class="wg-card">
-              <h3>Species library</h3>
-              <p>Browse species profiles and field knowledge from the local catalog.</p>
+            <article class="kws-popular-card">
+              <img src="/static/images/elephant-hero.svg" alt="Grizzly Bear" />
+              <span>Grizzly Bear</span>
             </article>
-            <article class="wg-card">
-              <h3>Map view</h3>
-              <p>See sightings, protected areas, and conservation intelligence together.</p>
+            <article class="kws-popular-card">
+              <img src="/static/images/eagle-hero.svg" alt="Scarlet Macaw" />
+              <span>Scarlet Macaw</span>
             </article>
-            <article class="wg-card">
-              <h3>History</h3>
-              <p>Review previous detections and keep field reporting organized.</p>
+          </div>
+        </div>
+
+        <div class="kws-panel">
+          <div class="kws-section-head">
+            <p class="kws-eyebrow dark">Recent Sightings</p>
+            <h2>Latest animal detections</h2>
+          </div>
+          <div class="kws-sighting-list">
+            <article class="kws-sighting-card">
+              <img src="/static/images/tiger-hero.svg" alt="Moysted leopard" />
+              <div>
+                <strong>Moysted Leopard</strong>
+                <span>Location: Serengeti, Tanzania</span>
+                <span>Detected: 1 minute ago</span>
+              </div>
+            </article>
+            <article class="kws-sighting-card">
+              <img src="/static/images/elephant-hero.svg" alt="Moose" />
+              <div>
+                <strong>Forest Elephant</strong>
+                <span>Location: Gabon</span>
+                <span>Detected: 4 minutes ago</span>
+              </div>
+            </article>
+            <article class="kws-sighting-card">
+              <img src="/static/images/eagle-hero.svg" alt="Bald eagle" />
+              <div>
+                <strong>Soaring Bald Eagle</strong>
+                <span>Location: Lake region</span>
+                <span>Detected: 8 minutes ago</span>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="kws-panel">
+          <div class="kws-section-head">
+            <p class="kws-eyebrow dark">Guided Tours</p>
+            <h2>Safari ideas</h2>
+          </div>
+          <div class="kws-tour-grid">
+            <article class="kws-tour-card kws-tour-jeep">
+              <span>Safari Adventure</span>
+            </article>
+            <article class="kws-tour-card kws-tour-forest">
+              <span>Rainforest Trek</span>
             </article>
           </div>
         </div>
       </section>
 
-      <section class="wg-section wg-section-muted">
-        <div class="wg-container">
-          <div class="wg-section-head">
-            <p class="wg-kicker">Featured species</p>
-            <h2>Local animal gallery</h2>
-          </div>
-
-          <div class="wg-animal-grid">
-            <a class="wg-animal-card" href="./library.html">
-              <img src="/static/images/lion.svg" alt="Lion" />
-              <span>Lion</span>
-            </a>
-            <a class="wg-animal-card" href="./library.html">
-              <img src="/static/images/elephant.svg" alt="Elephant" />
-              <span>Elephant</span>
-            </a>
-            <a class="wg-animal-card" href="./library.html">
-              <img src="/static/images/giraffe.svg" alt="Giraffe" />
-              <span>Giraffe</span>
-            </a>
-            <a class="wg-animal-card" href="./library.html">
-              <img src="/static/images/zebra-hero.svg" alt="Zebra" />
-              <span>Zebra</span>
-            </a>
-          </div>
+      <section class="kws-shell kws-public-band">
+        <div>
+          <p class="kws-eyebrow">One common link</p>
+          <h2>WILDGUARD stays connected from the web to the backend.</h2>
+          <p>The frontend is public on GitHub Pages and the backend is served by the live tunnel while it is running.</p>
         </div>
-      </section>
-
-      <section class="wg-section">
-        <div class="wg-container">
-          <div class="wg-cta-band">
-            <div>
-              <p class="wg-kicker">Public access</p>
-              <h2>Use one common link for the full site.</h2>
-              <p>Open the GitHub Pages link for the frontend, and the live tunnel for the backend while the server is running.</p>
-            </div>
-            <div class="wg-cta-actions">
-              <a class="wg-btn wg-btn-primary" href="https://shedrackandrew-svg.github.io/wildguard/" target="_blank" rel="noreferrer">Open public site</a>
-              <a class="wg-btn wg-btn-secondary" href="https://d86fdb9565b500.lhr.life/" target="_blank" rel="noreferrer">Open live backend</a>
-            </div>
-          </div>
+        <div class="kws-actions">
+          <a class="kws-btn kws-btn-primary" href="https://shedrackandrew-svg.github.io/wildguard/" target="_blank" rel="noreferrer">Open public site</a>
+          <a class="kws-btn kws-btn-secondary" href="https://d86fdb9565b500.lhr.life/" target="_blank" rel="noreferrer">Open live backend</a>
         </div>
       </section>
     </main>
 
-    <footer class="wg-footer">
-      <div class="wg-container wg-footer-row">
-        <span>WildGuard</span>
+    <footer class="kws-footer">
+      <div class="kws-shell kws-footer-inner">
+        <span>WILDGUARD</span>
         <span>AI wildlife conservation platform</span>
       </div>
     </footer>
 
     <script>
       (function () {
-        const slides = Array.from(document.querySelectorAll('#wgSlideshow .wg-slide'));
-        if (slides.length > 1) {
-          let activeIndex = 0;
-          setInterval(() => {
-            slides[activeIndex].classList.remove('active');
-            activeIndex = (activeIndex + 1) % slides.length;
-            slides[activeIndex].classList.add('active');
-          }, 3800);
+        const nav = document.getElementById('kwsNav');
+        const button = document.getElementById('kwsMenuBtn');
+        if (button && nav) {
+          button.addEventListener('click', () => nav.classList.toggle('open'));
         }
 
-        const navToggle = document.getElementById('wgNavToggle');
-        const navLinks = document.getElementById('wgNavLinks');
-        if (navToggle && navLinks) {
-          navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+        const slides = Array.from(document.querySelectorAll('.kws-hero-slide'));
+        if (slides.length > 1) {
+          let index = 0;
+          window.setInterval(() => {
+            slides[index].classList.remove('active');
+            index = (index + 1) % slides.length;
+            slides[index].classList.add('active');
+          }, 3600);
         }
       })();
     </script>
