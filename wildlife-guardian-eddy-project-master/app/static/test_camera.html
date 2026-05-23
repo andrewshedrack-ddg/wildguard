@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>WildGuard Camera & Model Test</title>
-    <link rel="stylesheet" href="styles-pro.css" />
+    <link rel="stylesheet" href="/static/styles-pro.css" />
     <style>body{padding:18px;font-family:Manrope,system-ui,Segoe UI,Arial;margin:0} .wrap{max-width:980px;margin:0 auto} .controls{display:flex;gap:8px;margin:12px 0}</style>
   </head>
   <body>
@@ -29,8 +29,8 @@
       <p class="tiny-note">This page reuses the app runtime present in <code>app.js</code>. It will attempt to load local vendor files first.</p>
     </div>
 
-    <script src="index-pro.js"></script>
-    <script src="app.js"></script>
+    <script src="/static/index-pro.js"></script>
+    <script src="/static/app.js" type="module"></script>
     <script>
       // Self-contained local test (independent of app.js runtime)
       let localStream = null;

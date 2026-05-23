@@ -4,8 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>WildGuard Animal Library</title>
-    <link href="/static/vendor/fonts.css" rel="stylesheet" />
-    <link rel="stylesheet" href="styles-pro.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Manrope:wght@400;500;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
+    <link rel="icon" href="/static/tiger-logo.svg" />
+    <link rel="stylesheet" href="/static/styles-pro.css" />
   </head>
   <body>
     <div class="slideshow-bg" aria-hidden="true"></div>
@@ -28,6 +31,28 @@
     </header>
     <main class="layout single">
       <section class="panel telemetry">
+        <div class="library-showcase">
+          <article class="library-hero">
+            <p class="section-eyebrow">Animal atlas</p>
+            <h2>Slideshow of wildlife intelligence</h2>
+            <p>Browse curated animal photography and live catalog intelligence before diving into the full searchable library.</p>
+            <div class="actions">
+              <button id="libraryPlayBtn" type="button">Play Slideshow</button>
+              <button id="libraryPauseBtn" type="button">Pause Slideshow</button>
+            </div>
+          </article>
+          <aside class="library-slideshow" id="librarySlideshow" aria-label="Featured animal slideshow">
+            <div class="library-slide active" style="background-image:url('/static/images/lion-hero.svg')">
+              <div class="library-slide-caption"><strong>Lion</strong> apex social predator, savanna specialist.</div>
+            </div>
+            <div class="library-slide" style="background-image:url('/static/images/elephant-hero.svg')">
+              <div class="library-slide-caption"><strong>Elephant</strong> complex memory, family-led herds, and migration routes.</div>
+            </div>
+            <div class="library-slide" style="background-image:url('/static/images/giraffe-hero.svg')">
+              <div class="library-slide-caption"><strong>Giraffe</strong> iconic browsing species, tall-scan silhouette.</div>
+            </div>
+          </aside>
+        </div>
         <div class="panel-head">
           <h1>Global Animal Library</h1>
           <p>Interactive intelligence library across animals, reptiles, birds, insects, fungi, bacteria, and viruses.</p>
@@ -62,8 +87,8 @@
         <div id="libraryDetail" class="profile-box">Select a species card for richer details and voice summary.</div>
       </section>
     </main>
-    <script src="index-pro.js"></script>
-    <script src="app.js"></script>
-    <script src="library.js" type="module"></script>
+    <script src="/static/index-pro.js?v=20260523"></script>
+    <script src="/static/app.js?v=20260523" type="module"></script>
+    <script src="/static/library.js?v=20260523" type="module"></script>
   </body>
 </html>

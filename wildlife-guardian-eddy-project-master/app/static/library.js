@@ -11,15 +11,36 @@ const libraryDetail = document.getElementById("libraryDetail");
 
 let currentRows = [];
 
+const IMAGE_FALLBACKS = {
+  lion: "/static/images/lion-hero.svg",
+  elephant: "/static/images/elephant-hero.svg",
+  giraffe: "/static/images/giraffe-hero.svg",
+  leopard: "/static/images/leopard-hero.svg",
+  zebra: "/static/images/zebra-hero.svg",
+  eagle: "/static/images/lion-hero.svg",
+  butterfly: "/static/images/zebra-hero.svg",
+  spider: "/static/images/leopard-hero.svg",
+  fish: "/static/images/elephant-hero.svg",
+};
+
+function resolveImageUrl(row) {
+  if (row?.image_url) return row.image_url;
+  const bag = `${row?.species_name || ""} ${row?.common_name || ""} ${row?.taxonomy_class || ""}`.toLowerCase();
+  for (const [key, value] of Object.entries(IMAGE_FALLBACKS)) {
+    if (bag.includes(key)) return value;
+  }
+  return "/static/images/lion-hero.svg";
+}
+
 const FOUNDATION_LIBRARY = [
-  { species_name: "lion", scientific_name: "Panthera leo", common_name: "Lion", taxonomy_class: "Mammalia", family: "Felidae", conservation_status: "Vulnerable", habitats: ["Savanna"], regions: ["Africa"], details: "Apex social predator.", image_url: "https://upload.wikimedia.org/wikipedia/commons/7/73/Lion_waiting_in_Namibia.jpg", source: "foundation", sightings: 0 },
-  { species_name: "bald eagle", scientific_name: "Haliaeetus leucocephalus", common_name: "Bald Eagle", taxonomy_class: "Aves", family: "Accipitridae", conservation_status: "Least Concern", habitats: ["Rivers", "Coasts"], regions: ["North America"], details: "Large fish-hunting raptor.", image_url: "https://upload.wikimedia.org/wikipedia/commons/1/1a/Bald_Eagle_Portrait.jpg", source: "foundation", sightings: 0 },
-  { species_name: "komodo dragon", scientific_name: "Varanus komodoensis", common_name: "Komodo Dragon", taxonomy_class: "Reptilia", family: "Varanidae", conservation_status: "Endangered", habitats: ["Dry forest"], regions: ["Indonesia"], details: "Largest extant lizard.", image_url: "https://upload.wikimedia.org/wikipedia/commons/9/99/Komodo_dragon_with_tongue.jpg", source: "foundation", sightings: 0 },
-  { species_name: "axolotl", scientific_name: "Ambystoma mexicanum", common_name: "Axolotl", taxonomy_class: "Amphibia", family: "Ambystomatidae", conservation_status: "Critically Endangered", habitats: ["Freshwater"], regions: ["Mexico"], details: "Regeneration model amphibian.", image_url: "https://upload.wikimedia.org/wikipedia/commons/6/63/Ambystoma_mexicanum_1.jpg", source: "foundation", sightings: 0 },
-  { species_name: "monarch butterfly", scientific_name: "Danaus plexippus", common_name: "Monarch Butterfly", taxonomy_class: "Insecta", family: "Nymphalidae", conservation_status: "Endangered", habitats: ["Meadows"], regions: ["North America"], details: "Long-distance migratory insect.", image_url: "https://upload.wikimedia.org/wikipedia/commons/4/4c/Danaus_plexippus_Male_Dorsal.jpg", source: "foundation", sightings: 0 },
-  { species_name: "jumping spider", scientific_name: "Salticidae", common_name: "Jumping Spider", taxonomy_class: "Arachnida", family: "Salticidae", conservation_status: "Not evaluated", habitats: ["Forests", "Urban edge"], regions: ["Worldwide"], details: "Visually guided predatory spider.", image_url: "https://upload.wikimedia.org/wikipedia/commons/3/30/Marpissa_muscosa_-_side.jpg", source: "foundation", sightings: 0 },
-  { species_name: "atlantic salmon", scientific_name: "Salmo salar", common_name: "Atlantic Salmon", taxonomy_class: "Actinopterygii", family: "Salmonidae", conservation_status: "Least Concern", habitats: ["Rivers", "Ocean"], regions: ["North Atlantic"], details: "Anadromous migratory fish.", image_url: "https://upload.wikimedia.org/wikipedia/commons/3/31/Salmo_salar.jpg", source: "foundation", sightings: 0 },
-  { species_name: "amanita muscaria", scientific_name: "Amanita muscaria", common_name: "Fly Agaric", taxonomy_class: "Agaricomycetes", family: "Amanitaceae", conservation_status: "Not evaluated", habitats: ["Temperate forest"], regions: ["Northern Hemisphere"], details: "Iconic mushroom species.", image_url: "https://upload.wikimedia.org/wikipedia/commons/3/32/Amanita_muscaria_3_vliegenzwammen_op_rij.jpg", source: "foundation", sightings: 0 },
+  { species_name: "lion", scientific_name: "Panthera leo", common_name: "Lion", taxonomy_class: "Mammalia", family: "Felidae", conservation_status: "Vulnerable", habitats: ["Savanna"], regions: ["Africa"], details: "Apex social predator.", image_url: "/static/images/lion-hero.svg", source: "foundation", sightings: 0 },
+  { species_name: "bald eagle", scientific_name: "Haliaeetus leucocephalus", common_name: "Bald Eagle", taxonomy_class: "Aves", family: "Accipitridae", conservation_status: "Least Concern", habitats: ["Rivers", "Coasts"], regions: ["North America"], details: "Large fish-hunting raptor.", image_url: "/static/images/lion-hero.svg", source: "foundation", sightings: 0 },
+  { species_name: "komodo dragon", scientific_name: "Varanus komodoensis", common_name: "Komodo Dragon", taxonomy_class: "Reptilia", family: "Varanidae", conservation_status: "Endangered", habitats: ["Dry forest"], regions: ["Indonesia"], details: "Largest extant lizard.", image_url: "/static/images/leopard-hero.svg", source: "foundation", sightings: 0 },
+  { species_name: "axolotl", scientific_name: "Ambystoma mexicanum", common_name: "Axolotl", taxonomy_class: "Amphibia", family: "Ambystomatidae", conservation_status: "Critically Endangered", habitats: ["Freshwater"], regions: ["Mexico"], details: "Regeneration model amphibian.", image_url: "/static/images/elephant-hero.svg", source: "foundation", sightings: 0 },
+  { species_name: "monarch butterfly", scientific_name: "Danaus plexippus", common_name: "Monarch Butterfly", taxonomy_class: "Insecta", family: "Nymphalidae", conservation_status: "Endangered", habitats: ["Meadows"], regions: ["North America"], details: "Long-distance migratory insect.", image_url: "/static/images/zebra-hero.svg", source: "foundation", sightings: 0 },
+  { species_name: "jumping spider", scientific_name: "Salticidae", common_name: "Jumping Spider", taxonomy_class: "Arachnida", family: "Salticidae", conservation_status: "Not evaluated", habitats: ["Forests", "Urban edge"], regions: ["Worldwide"], details: "Visually guided predatory spider.", image_url: "/static/images/leopard-hero.svg", source: "foundation", sightings: 0 },
+  { species_name: "atlantic salmon", scientific_name: "Salmo salar", common_name: "Atlantic Salmon", taxonomy_class: "Actinopterygii", family: "Salmonidae", conservation_status: "Least Concern", habitats: ["Rivers", "Ocean"], regions: ["North Atlantic"], details: "Anadromous migratory fish.", image_url: "/static/images/elephant-hero.svg", source: "foundation", sightings: 0 },
+  { species_name: "amanita muscaria", scientific_name: "Amanita muscaria", common_name: "Fly Agaric", taxonomy_class: "Agaricomycetes", family: "Amanitaceae", conservation_status: "Not evaluated", habitats: ["Temperate forest"], regions: ["Northern Hemisphere"], details: "Iconic mushroom species.", image_url: "/static/images/giraffe-hero.svg", source: "foundation", sightings: 0 },
   { species_name: "escherichia coli", scientific_name: "Escherichia coli", common_name: "E. coli", taxonomy_class: "Gammaproteobacteria", family: "Enterobacteriaceae", conservation_status: "Not evaluated", habitats: ["Gut", "Water"], regions: ["Worldwide"], details: "Model bacterium used in genetics and molecular biology.", image_url: "", source: "foundation", sightings: 0 },
   { species_name: "sars-cov-2", scientific_name: "Severe acute respiratory syndrome coronavirus 2", common_name: "SARS-CoV-2", taxonomy_class: "Pisoniviricetes", family: "Coronaviridae", conservation_status: "Not applicable", habitats: ["Host-associated"], regions: ["Worldwide"], details: "Coronavirus with global public health impact.", image_url: "", source: "foundation", sightings: 0 },
 ];
@@ -105,8 +126,8 @@ function renderCards(rows) {
 
   libraryGrid.innerHTML = rows
     .map((row, idx) => {
-      const image = row.image_url
-        ? `<img src="${row.image_url}" alt="${row.species_name}" />`
+      const image = resolveImageUrl(row)
+        ? `<img src="${resolveImageUrl(row)}" alt="${row.species_name}" loading="lazy" />`
         : `<div class="gallery-fallback">${row.species_name}</div>`;
       return `
         <article class="gallery-card species-card" data-index="${idx}">
@@ -141,6 +162,44 @@ function renderCards(rows) {
       speak(`${row.species_name}. ${row.taxonomy_class || "Unknown class"}. ${row.details || "No details available."}`);
     });
   }
+}
+
+function initShowcaseSlideshow() {
+  const slideshow = document.getElementById("librarySlideshow");
+  const playBtn = document.getElementById("libraryPlayBtn");
+  const pauseBtn = document.getElementById("libraryPauseBtn");
+  if (!slideshow) return;
+
+  const slides = Array.from(slideshow.querySelectorAll(".library-slide"));
+  if (!slides.length) return;
+
+  let index = 0;
+  let timer = null;
+
+  function show(nextIndex) {
+    slides[index].classList.remove("active");
+    index = nextIndex % slides.length;
+    slides[index].classList.add("active");
+  }
+
+  function play() {
+    if (timer) return;
+    timer = window.setInterval(() => show(index + 1), 4800);
+  }
+
+  function pause() {
+    if (timer) {
+      window.clearInterval(timer);
+      timer = null;
+    }
+  }
+
+  if (playBtn) playBtn.addEventListener("click", play);
+  if (pauseBtn) pauseBtn.addEventListener("click", pause);
+
+  slideshow.addEventListener("mouseenter", pause);
+  slideshow.addEventListener("mouseleave", play);
+  play();
 }
 
 async function fetchCatalogRows() {
@@ -264,3 +323,5 @@ syncInsectsBtn.addEventListener("click", () => {
 refreshLibrary().catch((err) => {
   libraryMeta.textContent = err.message;
 });
+
+initShowcaseSlideshow();

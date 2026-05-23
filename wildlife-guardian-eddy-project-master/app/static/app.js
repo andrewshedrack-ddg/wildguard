@@ -44,7 +44,7 @@ const mcRiskScore = document.getElementById("mcRiskScore");
 const mcHealthScore = document.getElementById("mcHealthScore");
 const mcSignalText = document.getElementById("mcSignalText");
 
-const ctx = overlay.getContext("2d");
+const ctx = overlay && typeof overlay.getContext === "function" ? overlay.getContext("2d") : null;
 let stream = null;
 let localModel = null;
 let localLoopHandle = null;
@@ -81,6 +81,33 @@ let lastLocalObservationAt = 0;
 let localPulse = 0;
 let bluetoothSelections = [];
 let bluetoothStatusMessage = "Nearby scan not started.";
+
+const hasScannerUI = Boolean(
+  video &&
+    overlay &&
+    resultBox &&
+    alertsList &&
+    detectionsList &&
+    inventoryList &&
+    animalProfile &&
+    speciesSearchInput &&
+    searchSpeciesBtn &&
+    startBtn &&
+    stopBtn &&
+    toggleAnimalModeBtn &&
+    toggleVoiceBtn &&
+    testVoiceBtn &&
+    cameraSelect &&
+    refreshCamerasBtn &&
+    scanBluetoothBtn &&
+    bluetoothScanMode &&
+    connectStatus &&
+    qrCanvas &&
+    slideMeta &&
+    slideshowBg &&
+    galleryGrid &&
+    logoutBtn
+);
 
 function isGithubPagesHost() {
   return window.location.hostname.endsWith("github.io");
@@ -853,7 +880,7 @@ async function loadSlideshow() {
   if (!slideshowItems.length) {
     try {
       const manifestPath = `${getRepoBasePath() || ''}/slideshow.json`;
-      const mRes = await fetch(manifestPath.replace(/\/g, '/'));
+      const mRes = await fetch(manifestPath.replace(/\\/g, '/'));
       if (mRes.ok) {
         const manifest = await mRes.json();
         if (Array.isArray(manifest) && manifest.length) {
@@ -963,12 +990,14 @@ async function handleAuthSubmit(event) {
 }
 
 function attachEvents() {
-  startBtn.addEventListener("click", () => {
-    primeVoice();
-    startCamera().catch((err) => (resultBox.textContent = `Camera error: ${err.message}`));
-  });
-  stopBtn.addEventListener("click", stopCamera);
-  refreshCamerasBtn.addEventListener("click", () => loadCameraDevices().catch(() => {}));
+  if (startBtn) {
+    startBtn.addEventListener("click", () => {
+      primeVoice();
+      startCamera().catch((err) => (resultBox.textContent = `Camera error: ${err.message}`));
+    });
+  }
+  if (stopBtn) stopBtn.addEventListener("click", stopCamera);
+  if (refreshCamerasBtn) refreshCamerasBtn.addEventListener("click", () => loadCameraDevices().catch(() => {}));
   if (connectExternalCameraBtn) {
     connectExternalCameraBtn.addEventListener("click", () => {
       connectExternalCamera().catch((err) => {
@@ -976,18 +1005,22 @@ function attachEvents() {
       });
     });
   }
-  searchSpeciesBtn.addEventListener("click", () => searchSpecies().catch((err) => (animalProfile.textContent = `Lookup error: ${err.message}`)));
-  speciesSearchInput.addEventListener("keydown", (event) => {
-    if (event.key === "Enter") searchSpecies().catch((err) => (animalProfile.textContent = `Lookup error: ${err.message}`));
-  });
-  toggleVoiceBtn.addEventListener("click", () => {
-    voiceEnabled = !voiceEnabled;
-    toggleVoiceBtn.textContent = voiceEnabled ? "Voice On" : "Voice Off";
-    if (voiceEnabled) {
-      primeVoice();
-      speakProfile("system", { conservation_status: "active", facts: ["Voice narration enabled."] });
-    }
-  });
+  if (searchSpeciesBtn) searchSpeciesBtn.addEventListener("click", () => searchSpecies().catch((err) => (animalProfile.textContent = `Lookup error: ${err.message}`)));
+  if (speciesSearchInput) {
+    speciesSearchInput.addEventListener("keydown", (event) => {
+      if (event.key === "Enter") searchSpecies().catch((err) => (animalProfile.textContent = `Lookup error: ${err.message}`));
+    });
+  }
+  if (toggleVoiceBtn) {
+    toggleVoiceBtn.addEventListener("click", () => {
+      voiceEnabled = !voiceEnabled;
+      toggleVoiceBtn.textContent = voiceEnabled ? "Voice On" : "Voice Off";
+      if (voiceEnabled) {
+        primeVoice();
+        speakProfile("system", { conservation_status: "active", facts: ["Voice narration enabled."] });
+      }
+    });
+  }
   if (testVoiceBtn) {
     testVoiceBtn.addEventListener("click", () => {
       primeVoice();
@@ -997,13 +1030,17 @@ function attachEvents() {
       });
     });
   }
-  toggleAnimalModeBtn.addEventListener("click", () => {
-    animalOnlyMode = !animalOnlyMode;
-    toggleAnimalModeBtn.textContent = animalOnlyMode ? "Animal-Only On" : "Animal-Only Off";
-  });
-  scanBluetoothBtn.addEventListener("click", () => {
-    scanBluetooth().catch(() => {});
-  });
+  if (toggleAnimalModeBtn) {
+    toggleAnimalModeBtn.addEventListener("click", () => {
+      animalOnlyMode = !animalOnlyMode;
+      toggleAnimalModeBtn.textContent = animalOnlyMode ? "Animal-Only On" : "Animal-Only Off";
+    });
+  }
+  if (scanBluetoothBtn) {
+    scanBluetoothBtn.addEventListener("click", () => {
+      scanBluetooth().catch(() => {});
+    });
+  }
   if (tabSignIn) tabSignIn.addEventListener("click", () => setAuthMode("signin"));
   if (tabSignUp) tabSignUp.addEventListener("click", () => setAuthMode("signup"));
   if (authForm) {
@@ -1013,10 +1050,12 @@ function attachEvents() {
       });
     });
   }
-  logoutBtn.addEventListener("click", () => {
-    stopCamera();
-    if (authStatus) authStatus.textContent = "Camera stopped.";
-  });
+  if (logoutBtn) {
+    logoutBtn.addEventListener("click", () => {
+      stopCamera();
+      if (authStatus) authStatus.textContent = "Camera stopped.";
+    });
+  }
 
   if (openSettingsBtn && closeSettingsBtn && settingsPanel) {
     openSettingsBtn.addEventListener("click", () => settingsPanel.classList.remove("hidden"));
@@ -1053,6 +1092,10 @@ async function init() {
   syncSettingsInputs();
   unlockApp();
 
+  if (!hasScannerUI) {
+    return;
+  }
+
   if (window.speechSynthesis) {
     availableVoices = window.speechSynthesis.getVoices();
     window.speechSynthesis.onvoiceschanged = () => {
@@ -1063,7 +1106,7 @@ async function init() {
   attachEvents();
   loadBluetoothSelections();
   renderBluetoothStatus();
-  resultBox.classList.add("feed-live");
+  if (resultBox) resultBox.classList.add("feed-live");
 
   await Promise.all([loadCameraDevices(), initQrCode(), loadSlideshow(), pollTelemetry(), pollInventory()]);
   renderMissionControl();
@@ -1071,9 +1114,11 @@ async function init() {
   setInterval(() => pollInventory().catch(() => {}), 2600);
   setInterval(() => renderMissionControl(), 1500);
 
-  resultBox.textContent = backendEnabled
-    ? "Ready. Click Start Camera to begin secure scanning."
-    : "Ready in non-expiring web mode. Click Start Camera for local animal scanning.";
+  if (resultBox) {
+    resultBox.textContent = backendEnabled
+      ? "Ready. Click Start Camera to begin secure scanning."
+      : "Ready in non-expiring web mode. Click Start Camera for local animal scanning.";
+  }
 }
 
 init().catch((err) => {

@@ -42,6 +42,33 @@ body {
   padding-top: 76px;
 }
 
+/* Basic layout helpers for non-pro pages */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1rem;
+  border-radius: 10px;
+  background: var(--accent);
+  color: #062b18;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--line);
+}
+
 .preloader {
   position: fixed;
   inset: 0;
@@ -98,7 +125,7 @@ body {
   background: radial-gradient(circle at 20% 8%, rgba(136, 170, 214, 0.34), transparent 35%),
     radial-gradient(circle at 84% 90%, rgba(148, 194, 182, 0.28), transparent 36%),
     linear-gradient(180deg, rgba(249, 251, 255, 0.84), rgba(237, 243, 251, 0.88) 40%, rgba(231, 238, 248, 0.92)),
-    url("https://upload.wikimedia.org/wikipedia/commons/2/24/Elephants_at_Etosha_National_Park.jpg");
+    url("/static/images/elephant-hero.svg");
   background-size: auto, auto, auto, cover;
   background-position: center;
 }
@@ -656,7 +683,7 @@ body.menu-compact main.layout { padding-left: 240px; }
   height: 70px;
   border-radius: 16px;
   border: 1px solid rgba(24, 56, 95, 0.25);
-  background-image: url("https://upload.wikimedia.org/wikipedia/commons/7/73/Lion_waiting_in_Namibia.jpg");
+  background-image: url("/static/images/lion-hero.svg");
   background-size: cover;
   background-position: center;
   box-shadow: 0 10px 18px rgba(20, 45, 78, 0.2);

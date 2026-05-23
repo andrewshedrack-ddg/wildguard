@@ -4,8 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>WildGuard Wildlife History</title>
-    <link href="/static/vendor/fonts.css" rel="stylesheet" />
-    <link rel="stylesheet" href="styles-pro.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Manrope:wght@400;500;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/static/styles-pro.css" />
   </head>
   <body>
     <div class="slideshow-bg" aria-hidden="true"></div>
@@ -13,7 +15,7 @@
     <header class="site-nav">
       <div class="nav-inner">
         <a class="nav-brand" href="/">
-          <img src="https://images.unsplash.com/photo-1546182990-dffeafbe841d?auto=format&fit=crop&w=256&q=80" alt="WildGuard" onerror="this.onerror=null;this.src='/static/tiger-logo.svg';" />
+          <img src="/static/tiger-logo.svg" alt="WildGuard" onerror="this.onerror=null;this.src='/static/tiger-logo.svg';" />
           <span>WildGuard</span>
         </a>
         <nav class="nav-links">
@@ -42,8 +44,8 @@
         </div>
       </section>
     </main>
-    <script src="index-pro.js"></script>
-    <script src="app.js"></script>
+    <script src="/static/index-pro.js"></script>
+    <script src="/static/app.js" type="module"></script>
     <script src="history.js" type="module"></script>
   </body>
 </html>

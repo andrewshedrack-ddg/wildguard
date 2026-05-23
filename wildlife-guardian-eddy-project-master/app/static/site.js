@@ -260,6 +260,28 @@ function initHomeSettings() {
 }
 
 function initInteractiveUI() {
+  const mobileToggle = document.getElementById('mobileMenuToggle');
+  const navMenu = document.getElementById('navMenu');
+  if (mobileToggle && navMenu) {
+    const syncMenu = () => {
+      const open = navMenu.classList.contains('is-open');
+      navMenu.style.display = open ? 'flex' : '';
+      navMenu.setAttribute('aria-hidden', String(!open));
+      mobileToggle.setAttribute('aria-expanded', String(open));
+    };
+    mobileToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('is-open');
+      syncMenu();
+    });
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768) {
+        navMenu.classList.remove('is-open');
+      }
+      syncMenu();
+    });
+    syncMenu();
+  }
+
   // Sidebar toggle
   const toggleBtn = document.getElementById('toggleSidebar');
   const sideMenu = document.getElementById('sideMenu');

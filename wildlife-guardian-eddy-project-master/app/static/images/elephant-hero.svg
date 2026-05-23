@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-label="Elephant illustration">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a1b1c"/>
+      <stop offset="55%" stop-color="#22483e"/>
+      <stop offset="100%" stop-color="#6ea37b"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="40%" cy="32%" r="68%">
+      <stop offset="0%" stop-color="#d8f3e1" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#d8f3e1" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bg)"/>
+  <circle cx="480" cy="210" r="330" fill="url(#glow)"/>
+  <g transform="translate(110 106)">
+    <ellipse cx="405" cy="350" rx="265" ry="195" fill="#a6b3ae"/>
+    <ellipse cx="250" cy="328" rx="102" ry="128" fill="#8a9994"/>
+    <ellipse cx="560" cy="315" rx="118" ry="145" fill="#8a9994"/>
+    <path d="M188 327c-35 24-52 52-52 84 0 83 36 155 98 199 22 16 48 26 76 31" fill="none" stroke="#8a9994" stroke-width="92" stroke-linecap="round"/>
+    <path d="M214 324c-49 23-74 56-74 100 0 91 44 168 120 214" fill="none" stroke="#6e7b76" stroke-width="36" stroke-linecap="round"/>
+    <path d="M670 325c29 28 45 60 45 94 0 86-39 157-107 197-23 13-47 20-73 23" fill="none" stroke="#8a9994" stroke-width="94" stroke-linecap="round"/>
+    <path d="M652 322c45 22 70 53 70 93 0 93-44 169-122 214" fill="none" stroke="#6e7b76" stroke-width="36" stroke-linecap="round"/>
+    <path d="M425 358c-67 8-113 41-133 97-12 34-2 70 28 107 24 30 51 47 83 54 64 13 132 9 203-11 39-11 67-29 84-53 24-35 26-71 7-108-31-57-80-90-148-100-39-6-79-5-124 0z" fill="#b8c3bf"/>
+    <ellipse cx="382" cy="349" rx="82" ry="110" fill="#9ca9a4"/>
+    <ellipse cx="446" cy="370" rx="58" ry="76" fill="#f1f4f2" opacity="0.2"/>
+    <circle cx="348" cy="321" r="14" fill="#243330"/>
+    <circle cx="497" cy="322" r="14" fill="#243330"/>
+    <path d="M369 390c16 14 34 14 44 0" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round"/>
+    <path d="M440 472c34 16 70 14 103-6 16-10 29-25 39-44" fill="none" stroke="#7a8c87" stroke-width="20" stroke-linecap="round"/>
+    <path d="M490 500c-18 88-7 150 33 191" fill="none" stroke="#9ca9a4" stroke-width="56" stroke-linecap="round"/>
+    <path d="M490 500c-18 88-7 150 33 191" fill="none" stroke="#6e7b76" stroke-width="20" stroke-linecap="round"/>
+  </g>
+</svg>

@@ -4,8 +4,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>WildGuard | Wildlife Conservation & AI Detection Platform</title>
-  <link href="/static/vendor/fonts.css" rel="stylesheet" />
-  <link rel="stylesheet" href="styles-pro.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" href="/static/tiger-logo.svg" />
+  <link rel="stylesheet" href="/static/styles-pro.css" />
+  <style>
+    .hero-bg.slideshow{position:absolute;inset:0;z-index:-1;overflow:hidden}
+    .hero-bg.slideshow .slide{position:absolute;left:0;top:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1s ease}
+    .hero-bg.slideshow .slide.active{opacity:1}
+    .hero-bg .hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg, rgba(11,90,43,0.6), rgba(0,0,0,0.4));pointer-events:none}
+  </style>
 </head>
 <body>
   <!-- Navigation -->
@@ -31,15 +40,38 @@
 
   <!-- Hero Section -->
   <section class="hero">
-    <div class="hero-content">
-      <h1>Protect Africa's Wildlife</h1>
-      <p>Advanced AI detection, real-time monitoring, and conservation intelligence</p>
-      <div class="hero-actions">
-        <a href="#detection" class="btn btn-lg">Start AI Detection</a>
-        <a href="#species" class="btn btn-outline btn-lg">Explore Species</a>
+    <div class="hero-content hero-grid">
+      <div class="hero-copy">
+        <p class="hero-overline">Field Dispatch · Wildlife Intelligence</p>
+        <h1>Protect Africa's Wildlife</h1>
+        <p class="hero-lead">Advanced AI detection, real-time monitoring, and conservation intelligence for rangers, researchers, and communities.</p>
+        <div class="hero-actions">
+          <a href="#detection" class="btn btn-lg">Start AI Detection</a>
+          <a href="#species" class="btn btn-outline btn-lg">Explore Species</a>
+        </div>
+        <div class="hero-metrics" aria-label="WildGuard highlights">
+          <span><strong>24/7</strong> live monitoring</span>
+          <span><strong>1000+</strong> species tracked</span>
+          <span><strong>99%</strong> detection accuracy</span>
+        </div>
       </div>
+      <aside class="hero-feature" aria-label="Featured field story">
+        <div class="hero-feature__media">
+          <span class="hero-feature__label">In the field</span>
+          <div class="hero-feature__image"></div>
+        </div>
+        <div class="hero-feature__body">
+          <h2>Live conservation intelligence, built for field response.</h2>
+          <p>Track sightings, surface risks, and move from detection to action with a visual system designed for speed.</p>
+        </div>
+      </aside>
+      </div>
+    <div class="hero-bg slideshow" id="heroSlideshow">
+      <img src="/static/images/elephant.svg" class="slide active" alt="elephant">
+      <img src="/static/images/lion.svg" class="slide" alt="lion">
+      <img src="/static/images/giraffe.svg" class="slide" alt="giraffe">
+      <div class="hero-overlay"></div>
     </div>
-    <div class="hero-bg" style="background: linear-gradient(135deg, rgba(11,90,43,0.8), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1511593358241-7eea1f3c84e5?auto=format&fit=crop&w=2000&q=80'); background-size: cover; background-position: center;"></div>
   </section>
 
   <!-- Stats Section -->
@@ -67,7 +99,10 @@
   <!-- Featured Content -->
   <section class="featured" id="featured">
     <div class="container">
-      <h2>Featured Stories</h2>
+      <div class="section-head">
+        <p class="section-eyebrow">Featured stories</p>
+        <h2>Conservation stories in motion</h2>
+      </div>
       <div class="featured-grid">
         <article class="featured-card">
           <div class="art-panel art-elephant">
@@ -106,8 +141,11 @@
   <!-- Parks Section -->
   <section class="parks-section" id="parks">
     <div class="container">
-      <h2>Our Protected Areas</h2>
-      <p class="section-subtitle">Explore Kenya's premier wildlife reserves and national parks</p>
+      <div class="section-head">
+        <p class="section-eyebrow">Protected areas</p>
+        <h2>Explore Kenya's premier reserves</h2>
+        <p class="section-subtitle">Explore Kenya's premier wildlife reserves and national parks</p>
+      </div>
       <div class="parks-grid">
         <div class="park-card">
           <div class="art-panel art-park-one">
@@ -147,8 +185,11 @@
   <!-- Species Library Preview -->
   <section class="species-preview" id="species">
     <div class="container">
-      <h2>Species Library</h2>
-      <p class="section-subtitle">Browse detailed profiles of over 1000 wildlife species</p>
+      <div class="section-head">
+        <p class="section-eyebrow">Species library</p>
+        <h2>Browse detailed profiles</h2>
+        <p class="section-subtitle">Browse detailed profiles of over 1000 wildlife species</p>
+      </div>
       <div class="species-carousel">
         <div class="species-item">
           <div class="species-image">🦁</div>
@@ -183,12 +224,21 @@
   <!-- AI Detection Section -->
   <section class="detection-section" id="detection">
     <div class="container">
-      <h2>Real-Time AI Detection</h2>
-      <p class="section-subtitle">Identify wildlife instantly with our advanced detection system</p>
+      <div class="section-head">
+        <p class="section-eyebrow">Live detection</p>
+        <h2>Real-time AI detection</h2>
+        <p class="section-subtitle">Identify wildlife instantly with our advanced detection system</p>
+      </div>
       <div class="detection-demo">
         <div class="demo-box">
-          <div class="camera-placeholder">📷 Live Camera Feed</div>
-          <p>Point your camera at wildlife to get instant AI-powered identification and conservation data</p>
+          <video id="landingVideo" autoplay playsinline muted style="width:100%;height:220px;object-fit:cover;border-radius:10px;background:#03110a;display:block"></video>
+          <div style="display:flex;gap:0.6rem;margin-top:0.6rem;flex-wrap:wrap">
+            <button id="startCameraBtn" class="btn btn-lg">Start Camera</button>
+            <button id="stopCameraBtn" class="btn btn-outline">Stop Camera</button>
+            <button id="captureBtn" class="btn">Capture & Analyze</button>
+          </div>
+          <p style="margin-top:0.6rem">Point your camera at wildlife to get instant AI-powered identification and conservation data</p>
+          <div id="detectionResults" style="margin-top:0.8rem;font-size:0.95rem;color:rgba(0,0,0,0.9);"></div>
         </div>
         <div class="detection-features">
           <h3>Detection Features</h3>
@@ -209,7 +259,10 @@
   <!-- News Section -->
   <section class="news-section" id="news">
     <div class="container">
-      <h2>Latest Conservation News</h2>
+      <div class="section-head">
+        <p class="section-eyebrow">Newsroom</p>
+        <h2>Latest conservation updates</h2>
+      </div>
       <div class="news-grid">
         <article class="news-item">
           <span class="date">May 15, 2026</span>
@@ -234,7 +287,10 @@
   <!-- Conservation Mission -->
   <section class="conservation" id="conservation">
     <div class="container">
-      <h2>Our Conservation Mission</h2>
+      <div class="section-head">
+        <p class="section-eyebrow">Mission</p>
+        <h2>Our conservation mission</h2>
+      </div>
       <div class="mission-content">
         <div class="mission-text">
           <h3>Protecting Wildlife Through Technology</h3>
@@ -264,8 +320,11 @@
   <!-- Newsletter Section -->
   <section class="newsletter">
     <div class="container">
-      <h2>Stay Updated</h2>
-      <p>Get the latest conservation news and wildlife updates</p>
+      <div class="section-head section-head--light">
+        <p class="section-eyebrow">Subscribe</p>
+        <h2>Stay updated</h2>
+        <p>Get the latest conservation news and wildlife updates</p>
+      </div>
       <form class="newsletter-form" onsubmit="alert('Newsletter signup coming soon'); return false;">
         <input type="email" placeholder="Your email address" required />
         <button type="submit" class="btn">Subscribe</button>
@@ -315,6 +374,107 @@
     </div>
   </footer>
 
-  <script src="index-pro.js"></script>
+  <script>
+    (function(){
+      const slides = document.querySelectorAll('#heroSlideshow .slide');
+      if(!slides || slides.length===0) return;
+      let i=0;
+      setInterval(()=>{ slides[i].classList.remove('active'); i=(i+1)%slides.length; slides[i].classList.add('active'); },5000);
+    })();
+  </script>
+  <script>
+    // Poll recent detections from backend and show a short summary in the landing demo.
+    (function(){
+      const out = document.getElementById('detectionResults');
+      if(!out) return;
+
+      async function fetchDetections(){
+        try{
+          const res = await fetch('/api/detections?limit=5');
+          if(!res.ok) throw new Error('no-backend');
+          const data = await res.json();
+          if(!Array.isArray(data) || data.length===0){
+            out.textContent = 'No recent detections.';
+            return;
+          }
+          out.innerHTML = data.map(d=>{
+            const t = new Date(d.created_at).toLocaleTimeString();
+            return `<div style="margin-bottom:0.45rem;"><strong>${d.species}</strong> — ${Math.round(d.confidence*100)}% — <small>${t}</small></div>`;
+          }).join('');
+        }catch(err){
+          out.textContent = 'Backend unavailable — demo runs locally without server.';
+        }
+      }
+      fetchDetections();
+      setInterval(fetchDetections, 7000);
+    })();
+  </script>
+  <script>
+    // Live camera capture + multipart upload to /api/detect/image
+    (function(){
+      const startBtn = document.getElementById('startCameraBtn');
+      const stopBtn = document.getElementById('stopCameraBtn');
+      const captureBtn = document.getElementById('captureBtn');
+      const video = document.getElementById('landingVideo');
+      const out = document.getElementById('detectionResults');
+      let stream = null;
+
+      async function startCamera(){
+        if(stream) return;
+        try{
+          stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' }, audio: false });
+          video.srcObject = stream;
+        }catch(err){
+          out.textContent = 'Camera unavailable or permission denied.';
+        }
+      }
+
+      function stopCamera(){
+        if(!stream) return;
+        stream.getTracks().forEach(t=>t.stop());
+        stream = null;
+        video.srcObject = null;
+      }
+
+      async function captureAndUpload(){
+        out.textContent = 'Capturing image...';
+        try{
+          const w = video.videoWidth || 640;
+          const h = video.videoHeight || 360;
+          const c = document.createElement('canvas');
+          c.width = w; c.height = h;
+          const ctx = c.getContext('2d');
+          ctx.drawImage(video, 0, 0, w, h);
+          const blob = await new Promise(res=>c.toBlob(res, 'image/jpeg', 0.9));
+          if(!blob){ out.textContent = 'Failed to capture image.'; return; }
+
+          out.textContent = 'Uploading to detection service...';
+          const fd = new FormData();
+          fd.append('image', blob, 'capture.jpg');
+          fd.append('source', 'live-camera');
+
+          const resp = await fetch('/api/detect/image', { method: 'POST', body: fd });
+          if(!resp.ok){
+            const text = await resp.text();
+            out.textContent = `Server error: ${resp.status} ${text}`;
+            return;
+          }
+          const json = await resp.json();
+          const species = json.label || json.top_label || json.species || 'unknown';
+          const conf = json.score || json.confidence || (json.scores && json.scores[0] && json.scores[0].score) || 0;
+          out.innerHTML = `<div><strong>${species}</strong> — ${Math.round(conf*100)}%</div><pre style="margin-top:0.4rem">${JSON.stringify(json, null, 2)}</pre>`;
+        }catch(err){
+          out.textContent = 'Upload failed — backend may be unavailable.';
+        }
+      }
+
+      if(startBtn) startBtn.addEventListener('click', startCamera);
+      if(stopBtn) stopBtn.addEventListener('click', stopCamera);
+      if(captureBtn) captureBtn.addEventListener('click', captureAndUpload);
+      // stop camera when leaving page
+      window.addEventListener('beforeunload', ()=> stopCamera());
+    })();
+  </script>
+  <script src="/static/index-pro.js"></script>
   </body>
 </html>

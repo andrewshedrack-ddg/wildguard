@@ -198,6 +198,17 @@ def _print_links(public_url: str, port: int) -> None:
     _log("=================================\n")
 
 
+def _local_only_url(port: int) -> str:
+    return f"http://127.0.0.1:{port}"
+
+
+def _enter_local_only_mode(port: int, reason: str) -> tuple[str, None, str]:
+    _log(reason)
+    public_url = _local_only_url(port)
+    _log("Local-only mode active: the app remains available on your machine even if a public tunnel is not.")
+    return public_url, None, "local-only"
+
+
 def _open_tunnel(port: int) -> tuple[str, subprocess.Popen[str], str]:
     cloudflare_token = os.getenv("CLOUDFLARE_TUNNEL_TOKEN", "").strip()
     cloudflare_public_url = os.getenv("CLOUDFLARE_PUBLIC_URL", "").strip()
@@ -269,12 +280,21 @@ def main() -> int:
         if not _probe_local_api(port):
             raise RuntimeError("Local API health check failed")
 
-        public_url, tunnel_proc, mode = _open_valid_tunnel(port)
+        try:
+            public_url, tunnel_proc, mode = _open_valid_tunnel(port)
+        except Exception as exc:
+            public_url, tunnel_proc, mode = _enter_local_only_mode(
+                port,
+                f"Public tunnel unavailable; continuing in local-only mode: {exc}",
+            )
+
         _save_current_link(public_url)
         _print_links(public_url, port)
         _log("Live URL is also saved in live_link.txt")
         if mode == "cloudflare-token":
             _log("Stable mode active: with valid Cloudflare token/domain, sessions can run many hours.")
+        elif mode == "local-only":
+            _log("Local-only mode active: remote sharing is temporarily unavailable.")
         else:
             _log("Temporary mode active: provider may rotate URL periodically.")
         _log(f"Target runtime session: {target_hours:.1f} hours (as long as provider allows).")
@@ -288,14 +308,20 @@ def main() -> int:
             if server_proc is not None and server_proc.poll() is not None:
                 raise RuntimeError("Local API server stopped unexpectedly")
 
-            if tunnel_proc is not None and tunnel_proc.poll() is not None:
+            if mode != "local-only" and tunnel_proc is not None and tunnel_proc.poll() is not None:
                 _log("Tunnel process stopped. Reconnecting...")
-                public_url, tunnel_proc, mode = _open_valid_tunnel(port)
+                try:
+                    public_url, tunnel_proc, mode = _open_valid_tunnel(port)
+                except Exception as exc:
+                    public_url, tunnel_proc, mode = _enter_local_only_mode(
+                        port,
+                        f"Tunnel reconnect failed; switching to local-only mode: {exc}",
+                    )
                 _save_current_link(public_url)
                 _print_links(public_url, port)
                 unreachable_streak = 0
 
-            if _is_public_url_reachable(public_url):
+            if mode == "local-only" or _is_public_url_reachable(public_url):
                 unreachable_streak = 0
             else:
                 unreachable_streak += 1
@@ -304,7 +330,13 @@ def main() -> int:
             if mode == "localhost-run" and unreachable_streak >= 3:
                 _log("Public URL became unreachable. Rotating temporary tunnel link...")
                 _terminate_if_running(tunnel_proc)
-                public_url, tunnel_proc, mode = _open_valid_tunnel(port)
+                try:
+                    public_url, tunnel_proc, mode = _open_valid_tunnel(port)
+                except Exception as exc:
+                    public_url, tunnel_proc, mode = _enter_local_only_mode(
+                        port,
+                        f"Rotation failed; switching to local-only mode: {exc}",
+                    )
                 _save_current_link(public_url)
                 _print_links(public_url, port)
                 unreachable_streak = 0

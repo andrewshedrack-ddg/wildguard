@@ -107,6 +107,11 @@ jobs:
               out_html = rewrite_html(content)
               (out / html.name).write_text(out_html, encoding='utf-8')
 
+            # Keep legacy entry point aligned with the modern landing page so GitHub Pages
+            # cannot accidentally surface the older template through direct links or caches.
+            if (out / 'index.html').exists():
+              shutil.copy2(out / 'index.html', out / 'index-pro.html')
+
           # SPA-ish fallback
           shutil.copy2(out / 'index.html', out / '404.html')
           PY
