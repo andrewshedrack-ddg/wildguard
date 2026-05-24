@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-label="Giraffe illustration">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1a160b"/>
+      <stop offset="55%" stop-color="#755b25"/>
+      <stop offset="100%" stop-color="#d8b26b"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="60%" cy="25%" r="70%">
+      <stop offset="0%" stop-color="#fff0c8" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#fff0c8" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bg)"/>
+  <circle cx="720" cy="210" r="330" fill="url(#glow)"/>
+  <g transform="translate(160 70)">
+    <path d="M454 84c24 0 43 19 43 43v264h63c78 0 141 63 141 141v62c0 75-60 135-135 135H303c-74 0-135-61-135-135v-43c0-75 60-135 135-135h74V127c0-24 19-43 43-43z" fill="#f3d6a0"/>
+    <path d="M409 126c0-22 18-40 40-40h16c22 0 40 18 40 40v264h-96z" fill="#d3a85c"/>
+    <circle cx="449" cy="264" r="110" fill="#f5d89e"/>
+    <circle cx="449" cy="264" r="98" fill="#edd08d"/>
+    <circle cx="409" cy="245" r="12" fill="#1f1b12"/>
+    <circle cx="489" cy="245" r="12" fill="#1f1b12"/>
+    <path d="M424 294c20 16 46 16 64 0" fill="none" stroke="#5a3d18" stroke-width="10" stroke-linecap="round"/>
+    <path d="M366 114c-28-18-49-31-63-39" fill="none" stroke="#5a3d18" stroke-width="16" stroke-linecap="round"/>
+    <path d="M528 114c28-18 49-31 63-39" fill="none" stroke="#5a3d18" stroke-width="16" stroke-linecap="round"/>
+    <path d="M354 596c-4 81-18 131-44 167" fill="none" stroke="#e2bb6f" stroke-width="40" stroke-linecap="round"/>
+    <path d="M536 596c4 81 18 131 44 167" fill="none" stroke="#e2bb6f" stroke-width="40" stroke-linecap="round"/>
+    <path d="M321 644c-16 0-28-13-28-29v-17c0-16 12-29 28-29h16c16 0 28 13 28 29v17c0 16-12 29-28 29z" fill="#5a3d18"/>
+    <path d="M541 644c-16 0-28-13-28-29v-17c0-16 12-29 28-29h16c16 0 28 13 28 29v17c0 16-12 29-28 29z" fill="#5a3d18"/>
+    <g fill="#7a4e1e" opacity="0.95">
+      <ellipse cx="350" cy="174" rx="24" ry="20"/>
+      <ellipse cx="483" cy="180" rx="30" ry="22"/>
+      <ellipse cx="420" cy="355" rx="24" ry="18"/>
+      <ellipse cx="512" cy="430" rx="34" ry="24"/>
+      <ellipse cx="356" cy="472" rx="26" ry="20"/>
+      <ellipse cx="468" cy="524" rx="28" ry="22"/>
+      <ellipse cx="397" cy="620" rx="24" ry="18"/>
+    </g>
+    <g fill="#5a3d18" opacity="0.9">
+      <circle cx="392" cy="184" r="10"/>
+      <circle cx="525" cy="260" r="12"/>
+      <circle cx="389" cy="416" r="11"/>
+      <circle cx="560" cy="468" r="11"/>
+      <circle cx="332" cy="530" r="12"/>
+      <circle cx="465" cy="650" r="10"/>
+    </g>
+  </g>
+</svg>

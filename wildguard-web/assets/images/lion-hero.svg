@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-label="Lion illustration">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1c1208"/>
+      <stop offset="55%" stop-color="#4d3218"/>
+      <stop offset="100%" stop-color="#d19a3f"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="35%" cy="28%" r="70%">
+      <stop offset="0%" stop-color="#ffd98a" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#ffd98a" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bg)"/>
+  <circle cx="420" cy="230" r="340" fill="url(#glow)"/>
+  <g transform="translate(135 112) scale(0.96)">
+    <path d="M387 220c-54 0-105 34-127 85l-34 82-91 21c-61 14-103 67-103 129v65c0 68 55 123 123 123h338c97 0 176-79 176-176v-55c0-102-83-184-184-184z" fill="#f6d08b" opacity="0.15"/>
+    <path d="M370 206c79 0 143 64 143 143v16c0 25 20 45 45 45h10c29 0 53 24 53 53v34c0 84-68 152-152 152H235c-67 0-121-54-121-121v-58c0-52 34-98 84-114l75-24 29-73c18-45 62-73 110-73z" fill="#e8b46b" opacity="0.22"/>
+    <circle cx="398" cy="266" r="132" fill="#f2c06f"/>
+    <circle cx="398" cy="266" r="176" fill="none" stroke="#6d3e18" stroke-width="60" stroke-linecap="round" stroke-dasharray="6 26" opacity="0.9"/>
+    <circle cx="398" cy="266" r="176" fill="none" stroke="#bf7f25" stroke-width="28" opacity="0.9"/>
+    <ellipse cx="398" cy="276" rx="64" ry="62" fill="#4c2e16"/>
+    <circle cx="370" cy="252" r="12" fill="#fff"/>
+    <circle cx="426" cy="252" r="12" fill="#fff"/>
+    <path d="M379 303c16 16 34 16 38 0" fill="none" stroke="#fff8e8" stroke-width="10" stroke-linecap="round"/>
+    <path d="M283 457c58-21 111-28 154-28 71 0 147 18 239 70 42 24 76 60 100 104" fill="none" stroke="#fff" stroke-opacity="0.22" stroke-width="20" stroke-linecap="round"/>
+    <path d="M257 678c22-84 66-147 117-179 18-11 39-19 61-26 9-3 19-8 24-18 18-36 41-56 70-61 51-8 113 27 170 104 48 64 80 137 96 219" fill="#d6a35b" opacity="0.86"/>
+    <path d="M256 678c18-73 56-130 103-162 18-12 39-22 61-30 19-6 28-21 33-38 12-40 31-63 60-70 45-10 100 17 153 89 49 67 83 141 99 228" fill="#f4d08c" opacity="0.55"/>
+    <path d="M282 686c25-62 59-108 102-139 28-20 57-37 86-52 18-9 30-24 37-44 11-31 28-48 50-52 37-7 83 10 135 63 56 58 95 138 109 224" fill="none" stroke="#3a220f" stroke-width="18" stroke-linecap="round" opacity="0.24"/>
+  </g>
+</svg>
