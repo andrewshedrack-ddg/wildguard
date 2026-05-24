@@ -27,13 +27,13 @@ document.querySelectorAll("nav a").forEach((link) => {
 });
 
 const hero = document.querySelector(".hero");
-const heroFallback = "assets/images/lion.svg";
+const heroFallback = "https://source.unsplash.com/1600x900/?wildlife";
 const heroImages = [
-  "assets/images/lion-hero.svg",
-  "assets/images/elephant-hero.svg",
-  "assets/images/leopard-hero.svg",
-  "assets/images/giraffe-hero.svg",
-  "assets/images/eagle-hero.svg",
+  "https://source.unsplash.com/1600x900/?lion",
+  "https://source.unsplash.com/1600x900/?elephant",
+  "https://source.unsplash.com/1600x900/?leopard",
+  "https://source.unsplash.com/1600x900/?giraffe",
+  "https://source.unsplash.com/1600x900/?buffalo",
 ];
 
 document.querySelectorAll(".flashcard-front img").forEach((img) => {

@@ -33,9 +33,7 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background-size: cover;
-  background-position: center;
-  animation: slideshow 24s infinite;
+  background: linear-gradient(120deg, rgba(9, 43, 18, 0.45), rgba(0, 0, 0, 0.25));
   z-index: -1;
 }
 
@@ -43,27 +41,13 @@ body {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(120deg, rgba(9, 43, 18, 0.6), rgba(0, 0, 0, 0.3));
+  background: linear-gradient(120deg, rgba(9, 43, 18, 0.35), rgba(0, 0, 0, 0.2));
   z-index: -1;
 }
 
-@keyframes slideshow {
-  0% {
-    background-image: url("../assets/images/lion-hero.svg");
-  }
-  25% {
-    background-image: url("../assets/images/elephant-hero.svg");
-  }
-  50% {
-    background-image: url("../assets/images/leopard-hero.svg");
-  }
-  75% {
-    background-image: url("../assets/images/giraffe-hero.svg");
-  }
-  100% {
-    background-image: url("../assets/images/lion-hero.svg");
-  }
-}
+/* Hero background is set dynamically from JavaScript to use high-quality
+   stock images. Removed static keyframe images to avoid bundled SVGs.
+*/
 
 nav {
   display: flex;
