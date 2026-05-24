@@ -1,0 +1,40 @@
+name: Fetch Images and Deploy Pages
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  fetch-and-deploy:
+    name: Fetch images and deploy site
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Create images directory
+        run: |
+          mkdir -p wildguard-web/assets/images
+
+      - name: Download stock images from Unsplash
+        run: |
+          set -e
+          wget -qO wildguard-web/assets/images/lion-hero.jpg "https://source.unsplash.com/1600x900/?lion"
+          wget -qO wildguard-web/assets/images/elephant-hero.jpg "https://source.unsplash.com/1600x900/?elephant"
+          wget -qO wildguard-web/assets/images/leopard-hero.jpg "https://source.unsplash.com/1600x900/?leopard"
+          wget -qO wildguard-web/assets/images/giraffe-hero.jpg "https://source.unsplash.com/1600x900/?giraffe"
+          wget -qO wildguard-web/assets/images/buffalo-hero.jpg "https://source.unsplash.com/1600x900/?buffalo"
+          # Thumbnails (square)
+          wget -qO wildguard-web/assets/images/lion-thumb.jpg "https://source.unsplash.com/800x800/?lion"
+          wget -qO wildguard-web/assets/images/elephant-thumb.jpg "https://source.unsplash.com/800x800/?elephant"
+          wget -qO wildguard-web/assets/images/leopard-thumb.jpg "https://source.unsplash.com/800x800/?leopard"
+          wget -qO wildguard-web/assets/images/giraffe-thumb.jpg "https://source.unsplash.com/800x800/?giraffe"
+          wget -qO wildguard-web/assets/images/eagle-thumb.jpg "https://source.unsplash.com/800x800/?eagle"
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: wildguard-web
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
