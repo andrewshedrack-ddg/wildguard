@@ -1,239 +1,131 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>WildGuard | Wildlife Library</title>
-    <meta name="description" content="WildGuard is a wildlife conservation platform with species library, dashboard, live detection, and public Pages access." />
-    <link rel="icon" href="/static/tiger-logo.svg" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800&family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="/static/styles-pro.css" />
-  </head>
-  <body class="wg-page wg-home-page">
-    <header class="kws-topbar">
-      <div class="kws-shell kws-topbar-inner">
-        <a class="kws-brand" href="./index.html" aria-label="WildGuard home">
-          <img src="/static/tiger-logo.svg" alt="WildGuard" />
-          <span>WILDGUARD</span>
-        </a>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WildSight - Explore Wildlife</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header id="home" class="hero">
+    <nav>
+      <h1>WildSight</h1>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#dashboard">Dashboard</a></li>
+        <li><a href="#library">Library</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
+    </nav>
+    <div class="hero-content">
+      <h2>Explore Wildlife Like Never Before</h2>
+      <p>Advanced Animal Scanning &amp; Smart Guided Tours</p>
+      <button type="button">Scan an Animal</button>
+      <button type="button">Start Your Tour</button>
+    </div>
+  </header>
 
-        <nav class="kws-nav" id="kwsNav">
-          <a href="./index.html" class="active">Home</a>
-          <a href="./dashboard.html">Dashboard</a>
-          <a href="./library.html">Library</a>
-          <a href="./map.html">Map</a>
-          <a href="./live.html">Live</a>
-          <a href="./history.html">History</a>
-          <a href="./settings.html">Settings</a>
-        </nav>
-
-        <button class="kws-menu-btn" id="kwsMenuBtn" type="button" aria-label="Toggle navigation">☰</button>
+  <section id="dashboard" class="dashboard">
+    <h2>Animal Scanning Dashboard</h2>
+    <div class="scan-container">
+      <div class="scan-view">
+        <img src="images/lion.svg" alt="Lion Scanning" />
+        <div class="overlay">Scanning... 0%</div>
       </div>
-    </header>
-
-    <main>
-      <section class="kws-hero kws-shell">
-        <div class="kws-hero-grid">
-          <div class="kws-hero-copy">
-            <p class="kws-eyebrow">WildSight Wildlife Library</p>
-            <h1>Explore and learn about wildlife in a full conservation atlas.</h1>
-            <p class="kws-lead">WildGuard brings the home page, dashboard, live camera, and wildlife library into one connected public link. The layout follows the white-and-green field guide style from the reference screens.</p>
-
-            <div class="kws-searchbar" aria-label="Search species">
-              <span>⌕</span>
-              <input type="search" placeholder="Search for an animal..." aria-label="Search for an animal" />
-            </div>
-
-            <div class="kws-tabs" aria-label="Animal filters">
-              <button type="button" class="active">All</button>
-              <button type="button">Mammals</button>
-              <button type="button">Birds</button>
-              <button type="button">Reptiles</button>
-              <button type="button">Amphibians</button>
-            </div>
-
-            <div class="kws-actions">
-              <a class="kws-btn kws-btn-primary" href="./dashboard.html">Open Dashboard</a>
-              <a class="kws-btn kws-btn-secondary" href="./library.html">Browse Library</a>
-            </div>
-          </div>
-
-          <aside class="kws-hero-guide">
-            <div class="kws-guide-panel kws-hero-slide active" id="heroSlideOne">
-              <img src="/static/images/tiger-hero.svg" alt="Bengal tiger" />
-            </div>
-            <div class="kws-guide-panel kws-hero-slide" id="heroSlideTwo">
-              <img src="/static/images/elephant-hero.svg" alt="African elephant" />
-            </div>
-            <div class="kws-guide-panel kws-hero-slide" id="heroSlideThree">
-              <img src="/static/images/eagle-hero.svg" alt="Bald eagle" />
-            </div>
-
-            <div class="kws-guide-card">
-              <p class="kws-mini-eyebrow">Species Guide: Bengal Tiger</p>
-              <h2>Panthera tigris</h2>
-              <div class="kws-guide-row"><strong>Overview</strong><span>The Bengal tiger is the largest tiger subspecies, found primarily in India and Bangladesh.</span></div>
-              <div class="kws-guide-row"><strong>Habitat</strong><span>Dense forests, grasslands, and mangroves.</span></div>
-              <div class="kws-guide-row"><strong>Diet</strong><span>Carnivorous: deer, wild boar, and other large prey.</span></div>
-              <div class="kws-guide-row"><strong>Conservation Status</strong><span class="danger">Status: Endangered</span></div>
-              <div class="kws-guide-actions">
-                <a class="kws-btn kws-btn-primary" href="./library.html">More Info</a>
-                <a class="kws-btn kws-btn-secondary" href="./live.html">Listen to Calls</a>
-              </div>
-            </div>
-          </aside>
-        </div>
-      </section>
-
-      <section class="kws-shell kws-surface-grid">
-        <div class="kws-panel kws-panel-wide">
-          <div class="kws-section-head">
-            <p class="kws-eyebrow dark">Featured Animals</p>
-            <h2>Wildlife cards built like a field guide</h2>
-          </div>
-          <div class="kws-feature-grid">
-            <article class="kws-animal-card card-lion">
-              <img src="/static/images/lion-hero.svg" alt="African Elephant" />
-              <span>African Elephant</span>
-            </article>
-            <article class="kws-animal-card card-tiger">
-              <img src="/static/images/tiger-hero.svg" alt="Bengal Tiger" />
-              <span>Bengal Tiger</span>
-            </article>
-            <article class="kws-animal-card card-eagle">
-              <img src="/static/images/eagle-hero.svg" alt="Bald Eagle" />
-              <span>Bald Eagle</span>
-            </article>
-            <article class="kws-animal-card card-frog">
-              <img src="/static/images/frog-hero.svg" alt="Green Tree Frog" />
-              <span>Green Tree Frog</span>
-            </article>
-          </div>
-        </div>
-
-        <div class="kws-panel">
-          <div class="kws-section-head">
-            <p class="kws-eyebrow dark">Animal Categories</p>
-            <h2>Quick navigation</h2>
-          </div>
-          <div class="kws-category-grid">
-            <div class="kws-category">Mammals</div>
-            <div class="kws-category">Birds</div>
-            <div class="kws-category">Reptiles</div>
-            <div class="kws-category">Amphibians</div>
-          </div>
-        </div>
-
-        <div class="kws-panel kws-panel-wide">
-          <div class="kws-section-head">
-            <p class="kws-eyebrow dark">Popular Species</p>
-            <h2>Local gallery highlight</h2>
-          </div>
-          <div class="kws-popular-grid">
-            <article class="kws-popular-card">
-              <img src="/static/images/tiger-hero.svg" alt="Leopard" />
-              <span>Leopard</span>
-            </article>
-            <article class="kws-popular-card">
-              <img src="/static/images/elephant-hero.svg" alt="Grizzly Bear" />
-              <span>Grizzly Bear</span>
-            </article>
-            <article class="kws-popular-card">
-              <img src="/static/images/eagle-hero.svg" alt="Scarlet Macaw" />
-              <span>Scarlet Macaw</span>
-            </article>
-          </div>
-        </div>
-
-        <div class="kws-panel">
-          <div class="kws-section-head">
-            <p class="kws-eyebrow dark">Recent Sightings</p>
-            <h2>Latest animal detections</h2>
-          </div>
-          <div class="kws-sighting-list">
-            <article class="kws-sighting-card">
-              <img src="/static/images/tiger-hero.svg" alt="Moysted leopard" />
-              <div>
-                <strong>Moysted Leopard</strong>
-                <span>Location: Serengeti, Tanzania</span>
-                <span>Detected: 1 minute ago</span>
-              </div>
-            </article>
-            <article class="kws-sighting-card">
-              <img src="/static/images/elephant-hero.svg" alt="Moose" />
-              <div>
-                <strong>Forest Elephant</strong>
-                <span>Location: Gabon</span>
-                <span>Detected: 4 minutes ago</span>
-              </div>
-            </article>
-            <article class="kws-sighting-card">
-              <img src="/static/images/eagle-hero.svg" alt="Bald eagle" />
-              <div>
-                <strong>Soaring Bald Eagle</strong>
-                <span>Location: Lake region</span>
-                <span>Detected: 8 minutes ago</span>
-              </div>
-            </article>
-          </div>
-        </div>
-
-        <div class="kws-panel">
-          <div class="kws-section-head">
-            <p class="kws-eyebrow dark">Guided Tours</p>
-            <h2>Safari ideas</h2>
-          </div>
-          <div class="kws-tour-grid">
-            <article class="kws-tour-card kws-tour-jeep">
-              <span>Safari Adventure</span>
-            </article>
-            <article class="kws-tour-card kws-tour-forest">
-              <span>Rainforest Trek</span>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="kws-shell kws-public-band">
-        <div>
-          <p class="kws-eyebrow">One common link</p>
-          <h2>WILDGUARD stays connected from the web to the backend.</h2>
-          <p>The frontend is public on GitHub Pages and the backend is served by the live tunnel while it is running.</p>
-        </div>
-        <div class="kws-actions">
-          <a class="kws-btn kws-btn-primary" href="https://shedrackandrew-svg.github.io/wildguard/" target="_blank" rel="noreferrer">Open public site</a>
-          <a class="kws-btn kws-btn-secondary" href="https://d86fdb9565b500.lhr.life/" target="_blank" rel="noreferrer">Open live backend</a>
-        </div>
-      </section>
-    </main>
-
-    <footer class="kws-footer">
-      <div class="kws-shell kws-footer-inner">
-        <span>WILDGUARD</span>
-        <span>AI wildlife conservation platform</span>
+      <div class="scan-info">
+        <h3>African Lion</h3>
+        <ul>
+          <li>Status: Vulnerable</li>
+          <li>Habitat: Savannas &amp; Grasslands</li>
+          <li>Diet: Carnivore</li>
+          <li>Lifespan: 8-12 Years</li>
+        </ul>
+        <button type="button">More Details</button>
+        <button type="button">Start Guided Tour</button>
       </div>
-    </footer>
+    </div>
+  </section>
 
-    <script>
-      (function () {
-        const nav = document.getElementById('kwsNav');
-        const button = document.getElementById('kwsMenuBtn');
-        if (button && nav) {
-          button.addEventListener('click', () => nav.classList.toggle('open'));
-        }
+  <section id="library" class="library">
+    <h2>Global Wildlife Library</h2>
+    <input type="text" placeholder="Search organisms..." />
+    <div class="filters">
+      <button type="button">Animals</button>
+      <button type="button">Plants</button>
+      <button type="button">Fungi</button>
+      <button type="button">Microbes</button>
+    </div>
+    <div class="organism-grid">
+      <div class="flashcard">
+        <div class="flashcard-inner">
+          <div class="flashcard-front">
+            <img src="images/elephant.svg" alt="African Elephant" />
+            <p>African Elephant</p>
+          </div>
+          <div class="flashcard-back">
+            <p><strong>Species:</strong> Loxodonta africana</p>
+            <p><strong>Habitat:</strong> Grasslands and Woodlands</p>
+            <p><strong>Fun Fact:</strong> Uses infrasound to communicate.</p>
+          </div>
+        </div>
+      </div>
+      <div class="flashcard">
+        <div class="flashcard-inner">
+          <div class="flashcard-front">
+            <img src="images/lion.svg" alt="African Lion" />
+            <p>African Lion</p>
+          </div>
+          <div class="flashcard-back">
+            <p><strong>Species:</strong> Panthera leo</p>
+            <p><strong>Habitat:</strong> Savannas and Grasslands</p>
+            <p><strong>Fun Fact:</strong> Roar can be heard up to 5 miles away.</p>
+          </div>
+        </div>
+      </div>
+      <div class="flashcard">
+        <div class="flashcard-inner">
+          <div class="flashcard-front">
+            <img src="images/giraffe.svg" alt="Giraffe" />
+            <p>Giraffe</p>
+          </div>
+          <div class="flashcard-back">
+            <p><strong>Species:</strong> Giraffa camelopardalis</p>
+            <p><strong>Habitat:</strong> Open Savannas</p>
+            <p><strong>Fun Fact:</strong> Sleeps less than 2 hours a day.</p>
+          </div>
+        </div>
+      </div>
+      <div class="flashcard">
+        <div class="flashcard-inner">
+          <div class="flashcard-front">
+            <img src="images/slideshow/zebra.svg" alt="Zebra" />
+            <p>Zebra</p>
+          </div>
+          <div class="flashcard-back">
+            <p><strong>Species:</strong> Equus quagga</p>
+            <p><strong>Habitat:</strong> Savannas and Grasslands</p>
+            <p><strong>Fun Fact:</strong> Every zebra stripe pattern is unique.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        const slides = Array.from(document.querySelectorAll('.kws-hero-slide'));
-        if (slides.length > 1) {
-          let index = 0;
-          window.setInterval(() => {
-            slides[index].classList.remove('active');
-            index = (index + 1) % slides.length;
-            slides[index].classList.add('active');
-          }, 3600);
-        }
-      })();
-    </script>
-  </body>
+  <section id="about" class="about">
+    <h2>About WildSight</h2>
+    <p>
+      WildSight combines wildlife scanning, voice-guided tours, and a universal knowledge library
+      to help explorers learn about biodiversity responsibly.
+    </p>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 WildSight | Explore Responsibly</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
 </html>
