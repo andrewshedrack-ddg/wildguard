@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-label="Leopard illustration">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#19110a"/>
+      <stop offset="55%" stop-color="#4a3520"/>
+      <stop offset="100%" stop-color="#d9a35f"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="35%" cy="35%" r="68%">
+      <stop offset="0%" stop-color="#ffe2b0" stop-opacity="0.58"/>
+      <stop offset="100%" stop-color="#ffe2b0" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bg)"/>
+  <circle cx="410" cy="250" r="330" fill="url(#glow)"/>
+  <g transform="translate(120 110)">
+    <path d="M383 188c74 0 135 60 135 134v25c0 13 10 23 23 23h20c29 0 52 23 52 52v31c0 95-77 173-173 173H298c-84 0-152-68-152-152v-40c0-63 40-119 100-140l66-23 23-65c16-45 60-76 108-76z" fill="#f1c77f"/>
+    <circle cx="395" cy="257" r="136" fill="#f3cf8b"/>
+    <circle cx="343" cy="241" r="12" fill="#1f160c"/>
+    <circle cx="449" cy="241" r="12" fill="#1f160c"/>
+    <path d="M364 294c17 16 36 16 46 0" fill="none" stroke="#1f160c" stroke-width="10" stroke-linecap="round"/>
+    <path d="M284 143c-29-15-51-28-66-38" fill="none" stroke="#7b531f" stroke-width="15" stroke-linecap="round"/>
+    <path d="M510 143c29-15 51-28 66-38" fill="none" stroke="#7b531f" stroke-width="15" stroke-linecap="round"/>
+    <g fill="#5d3a14" opacity="0.95">
+      <circle cx="279" cy="184" r="16"/>
+      <circle cx="314" cy="132" r="13"/>
+      <circle cx="381" cy="182" r="19"/>
+      <circle cx="469" cy="170" r="15"/>
+      <circle cx="533" cy="220" r="17"/>
+      <circle cx="315" cy="288" r="15"/>
+      <circle cx="529" cy="302" r="16"/>
+      <circle cx="386" cy="388" r="17"/>
+      <circle cx="496" cy="413" r="14"/>
+      <circle cx="289" cy="430" r="15"/>
+    </g>
+    <path d="M281 565c53-64 123-112 207-144 36-14 77-23 118-28" fill="none" stroke="#7b531f" stroke-width="22" stroke-linecap="round" opacity="0.25"/>
+    <path d="M560 576c28 86 39 144 31 175" fill="none" stroke="#7b531f" stroke-width="42" stroke-linecap="round"/>
+    <path d="M306 572c-27 82-36 140-26 173" fill="none" stroke="#7b531f" stroke-width="42" stroke-linecap="round"/>
+  </g>
+</svg>

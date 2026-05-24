@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="Eagle soaring over water and mountains">
+  <defs>
+    <linearGradient id="sky" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#d9eef8"/>
+      <stop offset="60%" stop-color="#9fd0ec"/>
+      <stop offset="100%" stop-color="#4f7fa6"/>
+    </linearGradient>
+    <linearGradient id="water" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#447b9f"/>
+      <stop offset="100%" stop-color="#27465d"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#sky)"/>
+  <path d="M0 510 C160 450 300 430 450 450 C630 474 730 530 860 530 C1030 530 1180 440 1350 420 C1460 408 1530 430 1600 450 L1600 900 L0 900 Z" fill="#70856c" opacity="0.52"/>
+  <path d="M0 610 C180 588 320 620 470 608 C620 598 730 548 840 554 C1000 560 1100 640 1240 648 C1390 656 1510 612 1600 606 L1600 900 L0 900 Z" fill="url(#water)"/>
+  <g opacity="0.33" fill="#ffffff">
+    <ellipse cx="330" cy="180" rx="170" ry="42"/>
+    <ellipse cx="1180" cy="140" rx="260" ry="54"/>
+  </g>
+  <g transform="translate(0 20)">
+    <path d="M760 330 C690 270 600 240 500 248 C548 296 618 326 700 344 C568 356 476 398 430 470 C522 458 620 440 704 404 C714 452 724 500 734 548 C772 518 800 472 814 422 C830 472 858 518 896 548 C906 500 916 452 926 404 C1010 440 1108 458 1200 470 C1154 398 1062 356 930 344 C1012 326 1082 296 1130 248 C1030 240 940 270 870 330 C852 286 820 250 798 232 C776 250 744 286 760 330Z" fill="#5b4126"/>
+    <path d="M798 234 C774 252 746 284 730 324 C690 286 628 258 560 254 C616 298 684 324 766 338 C652 352 558 402 520 474 C618 460 706 438 780 396 C790 444 798 496 806 552 C814 496 822 444 832 396 C906 438 994 460 1092 474 C1054 402 960 352 846 338 C928 324 996 298 1052 254 C984 258 922 286 882 324 C866 284 838 252 814 234 C806 240 802 244 798 248Z" fill="#7a5633"/>
+    <circle cx="798" cy="318" r="24" fill="#171717"/>
+    <path d="M792 342 L805 344 L798 366 Z" fill="#f0c35e"/>
+    <path d="M798 366 C778 386 756 400 730 408" stroke="#f0c35e" stroke-width="10" stroke-linecap="round" fill="none"/>
+    <path d="M798 366 C818 386 840 400 866 408" stroke="#f0c35e" stroke-width="10" stroke-linecap="round" fill="none"/>
+    <path d="M566 246 C548 218 542 188 546 158 C570 164 588 180 600 206" fill="#7c5a36"/>
+    <path d="M1030 246 C1048 218 1054 188 1050 158 C1026 164 1008 180 996 206" fill="#7c5a36"/>
+  </g>
+</svg>
