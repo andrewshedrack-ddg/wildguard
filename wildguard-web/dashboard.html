@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WildGuard - AI Scanning Dashboard</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="sub-header">
+    <h1>WildGuard Dashboard</h1>
+    <a href="index.html">Back Home</a>
+  </header>
+
+  <section id="dashboard" class="page-section visible">
+    <h2>AI Scanning Dashboard</h2>
+    <div id="camera-feed" class="camera-feed">
+      <img src="http://esp32cam.local/stream" alt="Camera Feed" />
+    </div>
+    <div id="scan-results" class="scan-results">Waiting for first detection...</div>
+  </section>
+
+  <script src="js/ai-dashboard.js"></script>
+</body>
+</html>
