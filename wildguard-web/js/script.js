@@ -27,6 +27,7 @@ document.querySelectorAll("nav a").forEach((link) => {
 });
 
 const hero = document.querySelector(".hero");
+const heroFallback = "assets/images/lion.svg";
 const heroImages = [
   "assets/images/lion-hero.svg",
   "assets/images/elephant-hero.svg",
@@ -35,13 +36,37 @@ const heroImages = [
   "assets/images/eagle-hero.svg",
 ];
 
+document.querySelectorAll(".flashcard-front img").forEach((img) => {
+  img.addEventListener("error", () => {
+    img.src = heroFallback;
+  });
+});
+
+function setHeroImage(path) {
+  if (!hero) {
+    return;
+  }
+  const probe = new Image();
+  probe.onload = () => {
+    hero.style.backgroundImage = `url('${path}')`;
+    hero.style.backgroundSize = "cover";
+    hero.style.backgroundPosition = "center";
+  };
+  probe.onerror = () => {
+    hero.style.backgroundImage = `url('${heroFallback}')`;
+    hero.style.backgroundSize = "cover";
+    hero.style.backgroundPosition = "center";
+  };
+  probe.src = path;
+}
+
 let heroIndex = 0;
 setInterval(() => {
   if (!hero) {
     return;
   }
-  hero.style.backgroundImage = `url('${heroImages[heroIndex]}')`;
-  hero.style.backgroundSize = "cover";
-  hero.style.backgroundPosition = "center";
+  setHeroImage(heroImages[heroIndex]);
   heroIndex = (heroIndex + 1) % heroImages.length;
 }, 5000);
+
+setHeroImage(heroImages[0]);
