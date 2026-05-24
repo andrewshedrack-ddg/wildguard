@@ -19,6 +19,13 @@ body {
   flex-direction: column;
 }
 
+.hero-frame {
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  pointer-events: none;
+}
+
 .hero::before {
   content: "";
   position: absolute;
@@ -136,6 +143,15 @@ button:hover {
 
 .about {
   background: linear-gradient(180deg, #f4f7ef, #eaf1e3);
+}
+
+.site-footer {
+  margin-top: 20px;
+  text-align: center;
+  padding: 18px;
+  background: #184d24;
+  color: #ecf8ea;
+  font-weight: 600;
 }
 
 .camera-feed img {
