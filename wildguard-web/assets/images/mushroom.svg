@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Mushroom">
+  <rect width="800" height="600" fill="#e6f0dd"/>
+  <ellipse cx="400" cy="510" rx="220" ry="30" fill="#9cb38c"/>
+  <ellipse cx="400" cy="270" rx="220" ry="140" fill="#d74f3f"/>
+  <circle cx="320" cy="250" r="24" fill="#fff"/>
+  <circle cx="420" cy="210" r="20" fill="#fff"/>
+  <circle cx="490" cy="280" r="18" fill="#fff"/>
+  <rect x="350" y="270" width="100" height="230" rx="45" fill="#f3e4cc"/>
+  <text x="30" y="560" fill="#1f2f20" font-size="44" font-family="Segoe UI, sans-serif">Fly Agaric</text>
+</svg>

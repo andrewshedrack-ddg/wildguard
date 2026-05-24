@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+  <rect width="100%" height="100%" fill="#3b2b1f"/>
+  <g fill="#f7dc8e">
+    <circle cx="240" cy="220" r="110"/>
+    <rect x="360" y="260" width="220" height="80" rx="18"/>
+  </g>
+  <text x="50" y="80" font-family="Poppins, sans-serif" font-size="48" fill="#fff">Lion Pride</text>
+</svg>

@@ -3,6 +3,7 @@ name: Deploy GitHub Pages
 on:
   push:
     branches:
+      - master
       - main
   workflow_dispatch:
 
@@ -31,7 +32,7 @@ jobs:
       - name: Upload static site artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: app/static
+          path: wildguard-web
 
       - name: Deploy to GitHub Pages
         id: deployment

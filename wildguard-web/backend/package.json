@@ -1,0 +1,17 @@
+{
+  "name": "wildguard-web-backend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Backend for WildGuard web frontend",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "node-fetch": "^2.7.0",
+    "twilio": "^5.5.3"
+  }
+}

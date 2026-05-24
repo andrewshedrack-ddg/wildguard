@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WildGuard - Wildlife Library</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="sub-header">
+    <h1>Global Wildlife Library</h1>
+    <a href="index.html">Back Home</a>
+  </header>
+
+  <section id="library" class="page-section visible">
+    <h2>Global Wildlife Library</h2>
+    <input id="searchInput" type="text" placeholder="Search organisms..." />
+    <div class="filters">
+      <button type="button" data-filter="all">Animals</button>
+      <button type="button" data-filter="plants">Plants</button>
+      <button type="button" data-filter="fungi">Fungi</button>
+      <button type="button" data-filter="microbes">Microbes</button>
+    </div>
+
+    <div class="organism-grid">
+      <div class="flashcard" data-category="animals" data-name="African Lion">
+        <div class="flashcard-inner">
+          <div class="flashcard-front">
+            <img src="assets/images/lion.svg" alt="African Lion" />
+            <p>African Lion</p>
+          </div>
+          <div class="flashcard-back">
+            <p>Species: Panthera leo</p>
+            <p>Habitat: Savanna</p>
+            <p>Fun Fact: Roar heard 5 miles away!</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="flashcard" data-category="plants" data-name="Baobab Tree">
+        <div class="flashcard-inner">
+          <div class="flashcard-front">
+            <img src="assets/images/baobab.svg" alt="Baobab Tree" />
+            <p>Baobab Tree</p>
+          </div>
+          <div class="flashcard-back">
+            <p>Species: Adansonia digitata</p>
+            <p>Habitat: African drylands</p>
+            <p>Fun Fact: Stores thousands of liters of water!</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="flashcard" data-category="fungi" data-name="Fly Agaric">
+        <div class="flashcard-inner">
+          <div class="flashcard-front">
+            <img src="assets/images/mushroom.svg" alt="Fly Agaric Mushroom" />
+            <p>Fly Agaric</p>
+          </div>
+          <div class="flashcard-back">
+            <p>Species: Amanita muscaria</p>
+            <p>Habitat: Boreal forests</p>
+            <p>Fun Fact: Iconic red mushroom in folklore!</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="flashcard" data-category="microbes" data-name="E. coli">
+        <div class="flashcard-inner">
+          <div class="flashcard-front">
+            <img src="assets/images/e_coli.svg" alt="E. coli Bacteria" />
+            <p>E. coli</p>
+          </div>
+          <div class="flashcard-back">
+            <p>Species: Escherichia coli</p>
+            <p>Habitat: Human gut</p>
+            <p>Fun Fact: Helpful strains aid digestion.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="js/library.js"></script>
+</body>
+</html>

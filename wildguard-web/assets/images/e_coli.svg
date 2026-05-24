@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="E coli">
+  <rect width="800" height="600" fill="#10222f"/>
+  <g fill="#58c8e5" opacity="0.88">
+    <ellipse cx="180" cy="220" rx="90" ry="38"/>
+    <ellipse cx="320" cy="340" rx="110" ry="44"/>
+    <ellipse cx="520" cy="240" rx="130" ry="48"/>
+    <ellipse cx="640" cy="370" rx="95" ry="36"/>
+  </g>
+  <g stroke="#9df2ff" stroke-width="5" fill="none" opacity="0.9">
+    <path d="M90 220 C40 190, 30 250, 95 250"/>
+    <path d="M285 345 C240 310, 230 380, 295 380"/>
+    <path d="M470 238 C430 205, 425 275, 485 272"/>
+    <path d="M585 370 C545 335, 540 405, 600 404"/>
+  </g>
+  <text x="30" y="560" fill="#d7f6ff" font-size="44" font-family="Segoe UI, sans-serif">E. coli</text>
+</svg>
